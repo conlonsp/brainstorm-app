@@ -6,7 +6,7 @@ function App() {
   const [user, setUser] = useState(null)
 
   return (
-    
+    <h1>App</h1>
   )
 }
 
