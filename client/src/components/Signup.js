@@ -2,7 +2,17 @@ import React from 'react'
 
 function Signup() {
   return (
-    <h1>Signup</h1>
+    <div>
+      <form>
+        <label>Username: </label>
+        <input/>
+        <label>Password: </label>
+        <input/>
+        <label>Password Confirmation: </label>
+        <input/>
+        <button>Signup</button>
+      </form>
+    </div>
   )
 }
 
