@@ -1,6 +1,9 @@
+import React from 'react'
+import Signup from './Signup';
+
 function App() {
   return (
-    <h1>App</h1>
+    <Signup />
   )
 }
 
