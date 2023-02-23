@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordInvalid, with: :user_invalid
+  rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
 
   def create
     user = User.create!(user_params)
