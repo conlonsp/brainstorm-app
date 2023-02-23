@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Signup() {
+function Signup({ setUser }) {
+  
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch('/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation
+      })
+    })
+  }
+
   return (
     <div>
       <form>
