@@ -11,9 +11,12 @@ function App() {
   return (
     <div>
       <NavBar />
+
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/signup' element={<Signup />}/>
+        <Route path='/signup' element={<Signup
+          setUser={setUser}
+        />}/>
         <Route path='/login' element={<Login />}/>
       </Routes>
     </div>
