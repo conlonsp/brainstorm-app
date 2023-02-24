@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :comments
-  resources :ideas
+  # resources :comments
+  # resources :ideas
 
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'

@@ -5,9 +5,9 @@ function NavBar() {
   return (
     <header>
       <div>
-        <NavLink to='/' exact>Home</NavLink>
-        <NavLink to='/signup' exact>Signup</NavLink>
-        <NavLink to='/login' exact>Login</NavLink>
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/signup'>Signup</NavLink>
+        <NavLink to='/login'>Login</NavLink>
       </div>
     </header>
   )

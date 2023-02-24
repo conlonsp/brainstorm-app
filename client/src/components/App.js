@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <NavBar />
-
+      {user ? <h1>Hi {user.username}</h1> : null}
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup
