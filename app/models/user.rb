@@ -4,11 +4,6 @@ class User < ApplicationRecord
   has_many :ideas
   has_many :comments
 
-  # validates :username, presence: true
-  # validates :username, uniqueness: true
-  # validates :bio, presence: true
-  # validates :bio, length: { maximum: 250 }
-  # validates :password, presence: true
-  # validates :password, length: { maximum: 20 }
-  # validates :avatar_url, presence: true
+  validates :username, presence: true
+  validates :username, uniqueness: true
 end
