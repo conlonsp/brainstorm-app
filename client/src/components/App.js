@@ -7,11 +7,12 @@ import Signup from './Signup';
 
 function App() {
   const [user, setUser] = useState(null)
+  
 
   return (
     <div>
       <NavBar />
-      {user ? <h1>Hi {user.username}</h1> : null}
+      {user ? <h1>Hi {user.username}</h1> : <h1></h1> || <h1>Please Sign Up!</h1>}
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup
