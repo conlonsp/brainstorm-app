@@ -8,13 +8,21 @@ import Signup from './Signup';
 function App() {
   const [user, setUser] = useState(null)
 
-  
+  useEffect(() => {
+    fetch('/me').then(r => {
+      if(r.ok) {
+        r.json().then(user => setUser(user))
+      }
+    })
+  }, [])
+
+  // if(!user) return <Login />
   
 
   return (
     <div>
       <NavBar />
-      {/* {user ? <h1>Hi {user.username}</h1> : <h1></h1> || <h1>Please Sign Up!</h1>} */}
+      {user ? <h1>Hi {user.username}</h1> : <h1>Please Sign Up or Log In</h1>}
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup
