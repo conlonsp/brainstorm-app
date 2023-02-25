@@ -6,6 +6,7 @@ function Login({ setUser }) {
   const [errors, setErrors] = useState([])
 
   function handleSubmit(e) {
+    e.preventDefault()
     fetch('/login', {
       method: 'POST',
       headers: {
@@ -16,13 +17,39 @@ function Login({ setUser }) {
       if(r.ok) {
         r.json().then(user => setUser(user))
       } else {
-        r.json().then(err => setErrors(err))
+        r.json().then(err => setErrors(err.errors))
       }
     })
   }
 
   return (
-    <h1>Login</h1>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='username'>Username: </label>
+        <input
+          type='text'
+          id='username'
+          autoComplete='off'
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <label htmlFor='password'>Password: </label>
+        <input
+          type='password'
+          id='password'
+          autoComplete='current-password'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <button>Login</button>
+      </form>
+      {errors.map(err => {
+        return (
+          <h1 key={err}>{err}</h1>
+        )
+      })}
+    </div>
   )
 }
 

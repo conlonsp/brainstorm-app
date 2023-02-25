@@ -1,19 +1,25 @@
 class SessionsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: 
+
   def create
-    user = User.find_by(username: params[:username])
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      render json: user, status: :created
-    else
-      render json: { errors: ["Invalid username or password"] }, status: :unauthorized
-    end
+    user = User.find_by!(username: params[:username])
+    user&.authenticate(params[:password])
+    session[:user_id] = user.id
+    render json: user, status: :created
   end
 
   def destroy
-    if session[:user_id]
-      session.delete :user_id
-      head :no_content
-    else
-      render json: { errors: ['Please log in'] }, status: :unauthorized
+    session[:user_id]
+    session.delete :user_id
+    head :no_content
+    # else
+    #   render json: { errors: ['Please log in'] }, status: :unauthorized
+    # end
+  end
+
+  private
+
+  def render_unauthorized
+    render json: { errors: ["Invalid username or password"] }, status: :unauthorized unless session.include? :user_id
   end
 end

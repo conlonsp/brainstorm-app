@@ -16,12 +16,12 @@ function App() {
     })
   }, [])
 
-  // if(!user) return <Login />
+  // {!user ? <Login /> : <Home />}
   
 
   return (
     <div>
-      <NavBar />
+      <NavBar setUser={setUser} />
       {user ? <h1>Hi {user.username}</h1> : <h1>Please Sign Up or Log In</h1>}
       <Routes>
         <Route path='/' element={<Home />}/>
@@ -32,6 +32,7 @@ function App() {
           setUser={setUser}
         />}/>
       </Routes>
+      
     </div>
   )
 }
