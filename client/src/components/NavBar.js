@@ -16,7 +16,7 @@ function NavBar({ setUser }) {
       <div>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/signup'>Signup</NavLink>
-        {/* <NavLink to='/login'>Login</NavLink> */}
+        <NavLink to='/login'>Login</NavLink>
       </div>
       <button onClick={handleLogout}>Logout</button>
     </header>

@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <NavBar setUser={setUser} />
-      {user ? <h1>Hi {user.username}</h1> : <h1>Please Sign Up or Log In</h1>}
+      {/* {user ? <h1>Hi {user.username}</h1> : <h1>Please Sign Up or Log In</h1>} */}
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup

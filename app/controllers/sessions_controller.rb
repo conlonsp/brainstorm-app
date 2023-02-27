@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
 
   def create
     user = User.find_by!(username: params[:username])
