@@ -15,8 +15,6 @@ function NavBar({ user, setUser }) {
     <header>
       <div>
         <NavLink to='/'>Home</NavLink>
-        <NavLink to='/signup'>Signup</NavLink>
-        <NavLink to='/login'>Login</NavLink>
       </div>
       {user ? <button onClick={handleLogout}>Logout</button> : null}
     </header>

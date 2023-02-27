@@ -1,8 +1,13 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import Login from './Login';
 
 function Home() {
   return (
-    <h1>Home</h1>
+    <div>
+      <Login />
+      <NavLink to='/signup'>Signup</NavLink>
+    </div>
   )
 }
 
