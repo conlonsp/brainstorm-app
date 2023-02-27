@@ -2,13 +2,13 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Login from './Login';
 
-function Home({ user, setUser }) {
+function Dashboard({ user, setUser, setLoggedIn }) {
   return (
     <div>
       {!user ? 
         <div>
           <h1>Please Login or Signup</h1>
-          <Login setUser={setUser} />
+          <Login setUser={setUser} setLoggedIn={setLoggedIn}/>
           <button id='signup'><NavLink to='/signup'>Signup</NavLink></button>
         </div>
         :
@@ -18,4 +18,4 @@ function Home({ user, setUser }) {
   )
 }
 
-export default Home;
+export default Dashboard;

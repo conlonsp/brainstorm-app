@@ -14,7 +14,8 @@ function NavBar({ user, setUser }) {
   return (
     <header>
       <div>
-        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/'>Dashboard</NavLink>
+        <NavLink to='/ideaboard'>Idea Board</NavLink>
       </div>
       {user ? <button onClick={handleLogout}>Logout</button> : null}
     </header>
