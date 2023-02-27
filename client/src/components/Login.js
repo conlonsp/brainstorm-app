@@ -24,7 +24,6 @@ function Login({ setUser }) {
 
   return (
     <div>
-      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='username'>Username: </label>
         <input
