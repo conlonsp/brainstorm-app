@@ -32,6 +32,7 @@ function Signup({ setUser }) {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor='username'>Username: </label>
+        <br/>
         <input
           type='text'
           id='username'
@@ -39,7 +40,9 @@ function Signup({ setUser }) {
           autoComplete='off'
           onChange={e => setUsername(e.target.value)}
         />
+        <br/>
         <label htmlFor='password'>Password: </label>
+        <br/>
         <input
           type='password'
           id='password'
@@ -47,7 +50,9 @@ function Signup({ setUser }) {
           autoComplete='current-password'
           onChange={e => setPassword(e.target.value)}
         />
+        <br/>
         <label htmlFor='password_confirmation'>Password Confirmation: </label>
+        <br/>
         <input
           type='password'
           id='password_confirmation'
@@ -55,6 +60,7 @@ function Signup({ setUser }) {
           autoComplete='current-password'
           onChange={e => setPasswordConfirmation(e.target.value)}
         />
+        <br/>
         <button>Signup</button>
       </form>
       {errors.map(err => {
