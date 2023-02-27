@@ -16,22 +16,43 @@ function App() {
       }
     })
   }, [])
+
+  console.log(loggedIn)
   
   return (
     <div>
-      <NavBar user={user} setUser={setUser} setLoggedIn={setLoggedIn} />
-      <Routes>
-        <Route path='/' element={<Dashboard
-          user={user}
-          setUser={setUser}
-          setLoggedIn={setLoggedIn}
-        />}/>
-        <Route path='/signup' element={<Signup
-          setUser={setUser}
-          setLoggedIn={setLoggedIn}
-        />}/>
-        <Route path='/ideaboard' element={<IdeaBoard />}/>
-      </Routes>
+      <NavBar
+        user={user}
+        setUser={setUser}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+      />
+      {loggedIn ?
+        <Routes>
+          <Route path='/' element={<Dashboard
+            user={user}
+            setUser={setUser}
+            setLoggedIn={setLoggedIn}
+          />}/>
+          <Route path='/signup' element={<Signup
+            setUser={setUser}
+            setLoggedIn={setLoggedIn}
+          />}/>
+          <Route path='/ideaboard' element={<IdeaBoard />}/>
+        </Routes>
+        :
+        <Routes>
+          <Route path='/' element={<Dashboard
+            user={user}
+            setUser={setUser}
+            setLoggedIn={setLoggedIn}
+          />}/>
+          <Route path='/signup' element={<Signup
+            setUser={setUser}
+            setLoggedIn={setLoggedIn}
+          />}/>
+        </Routes>
+      } 
     </div>
   )
 }
