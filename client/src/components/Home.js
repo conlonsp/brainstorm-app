@@ -9,7 +9,7 @@ function Home({ user, setUser }) {
         <div>
           <h1>Please Login or Signup</h1>
           <Login setUser={setUser} />
-          <NavLink to='/signup'>Signup</NavLink>
+          <button id='signup'><NavLink to='/signup'>Signup</NavLink></button>
         </div>
         :
         <h1>Welcome {user.username}</h1>

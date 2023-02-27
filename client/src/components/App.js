@@ -14,10 +14,7 @@ function App() {
       }
     })
   }, [])
-
-  // {!user ? <Login /> : <Home />}
   
-
   return (
     <div>
       <NavBar user={user} setUser={setUser} />
