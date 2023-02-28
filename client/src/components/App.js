@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 import Signup from './Signup';
@@ -19,6 +19,7 @@ function App() {
 
   console.log(loggedIn)
   
+
   return (
     <div>
       <NavBar
