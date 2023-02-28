@@ -1,4 +1,5 @@
 import React from "react";
+import Idea from './Idea';
 
 function IdeaBoard() {
 
