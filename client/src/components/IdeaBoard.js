@@ -13,6 +13,11 @@ function IdeaBoard() {
   return (
     <div>
       <h1>Idea Board</h1>
+      {ideas.map(idea => {
+        return (
+          <Idea key={idea} idea={idea} />
+        )
+      })}
     </div>
   )
 }
