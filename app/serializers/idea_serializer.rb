@@ -1,3 +1,3 @@
 class IdeaSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :likes, :user_id
+  attributes :title, :content, :likes
 end
