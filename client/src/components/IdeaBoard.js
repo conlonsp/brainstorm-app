@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Idea from './Idea';
 
 function IdeaBoard() {
+  const [ideas, setIdeas] = useState([])
 
   useEffect(() => {
     fetch('/ideas')
