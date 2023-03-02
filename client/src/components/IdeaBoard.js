@@ -3,7 +3,11 @@ import Idea from './Idea';
 
 function IdeaBoard() {
 
-  
+  useEffect(() => {
+    fetch('/ideas')
+    .then(r => r.json())
+    .then(data => setIdeas(data))
+  }, [])
 
   return (
     <div>
