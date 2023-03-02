@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Idea from './Idea';
 
 function IdeaBoard() {
+
+  
 
   return (
     <div>
