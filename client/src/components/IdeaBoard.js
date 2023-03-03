@@ -15,7 +15,7 @@ function IdeaBoard() {
       <h1>Idea Board</h1>
       {ideas.map(idea => {
         return (
-          <Idea key={idea} idea={idea} />
+          <Idea key={idea.id} idea={idea} />
         )
       })}
     </div>

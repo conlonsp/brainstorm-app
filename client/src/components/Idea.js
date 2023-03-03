@@ -1,9 +1,13 @@
 import React from 'react'
 
-function Idea() {
+function Idea({ idea }) {
 
   return (
-    <h1>Idea</h1>
+    <div>
+      <h1>{idea.title}</h1>
+      <p>{idea.content}</p>
+      <h3>{idea.likes}</h3>
+    </div>
   )
 }
 
