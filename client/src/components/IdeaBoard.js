@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Idea from './Idea';
 
-function IdeaBoard() {
+function IdeaBoard({ loggedIn }) {
   const [ideas, setIdeas] = useState([])
 
   useEffect(() => {
@@ -13,13 +13,18 @@ function IdeaBoard() {
   return (
     <div>
       <h1>Idea Board</h1>
-      {ideas.map(idea => {
-        return (
-          <Idea key={idea.id} idea={idea} />
-        )
-      })}
+      {loggedIn ?
+        ideas.map(idea => {
+          return (
+            <Idea key={idea.id} idea={idea} />
+          )
+        })
+        :
+        <h1>Please Log In to View Ideas</h1>
+      }
     </div>
   )
 }
 
 export default IdeaBoard
+

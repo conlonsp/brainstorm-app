@@ -23,7 +23,6 @@ function App() {
   return (
     <div>
       <NavBar
-        user={user}
         setUser={setUser}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
@@ -39,7 +38,7 @@ function App() {
             setUser={setUser}
             setLoggedIn={setLoggedIn}
           />}/>
-          <Route path='/ideaboard' element={<IdeaBoard />}/>
+          <Route path='/ideaboard' element={<IdeaBoard loggedIn={loggedIn}/>}/>
         </Routes>
         {/* :
         <Routes>
