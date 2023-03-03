@@ -28,7 +28,7 @@ function App() {
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
       />
-      {loggedIn ?
+      {/* {loggedIn ? */}
         <Routes>
           <Route path='/' element={<Dashboard
             user={user}
@@ -41,7 +41,7 @@ function App() {
           />}/>
           <Route path='/ideaboard' element={<IdeaBoard />}/>
         </Routes>
-        :
+        {/* :
         <Routes>
           <Route path='/' element={<Dashboard
             user={user}
@@ -53,7 +53,7 @@ function App() {
             setLoggedIn={setLoggedIn}
           />}/>
         </Routes>
-      } 
+      }  */}
     </div>
   )
 }

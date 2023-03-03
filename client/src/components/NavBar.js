@@ -15,18 +15,18 @@ function NavBar({ user, setUser, setLoggedIn, loggedIn }) {
   return (
     <header>
       <div>
-        {loggedIn ?
+        {/* {loggedIn ? */}
           <>
             <NavLink to='/'>Dashboard</NavLink>
             <NavLink to='/ideaboard'>Idea Board</NavLink>
           </>
-          :
+          {/* :
           <>
             <NavLink to='/'>Dashboard</NavLink>
           </>
-        }
+        } */}
       </div>
-      {user ? <button onClick={handleLogout}>Logout</button> : null}
+      {loggedIn ? <button onClick={handleLogout}>Logout</button> : null}
     </header>
   )
 }
