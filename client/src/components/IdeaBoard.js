@@ -3,11 +3,19 @@ import Idea from './Idea';
 
 function IdeaBoard({ loggedIn }) {
   const [ideas, setIdeas] = useState([])
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
     fetch('/ideas')
-    .then(r => r.json())
-    .then(data => setIdeas(data))
+    .then(r => {
+      if(r.ok) {
+        r.json().then(data => setIdeas(data))
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
+    })
+      
+
   }, [])
 
   return (
@@ -20,7 +28,7 @@ function IdeaBoard({ loggedIn }) {
           )
         })
         :
-        <h1>Please Log In to View Ideas</h1>
+        <h1 key={errors}>{errors}</h1>
       }
     </div>
   )
