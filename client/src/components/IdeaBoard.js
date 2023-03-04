@@ -14,9 +14,9 @@ function IdeaBoard({ loggedIn }) {
         r.json().then(err => setErrors(err.errors))
       }
     })
-      
-
   }, [])
+
+  console.log(errors)
 
   return (
     <div>
@@ -28,7 +28,11 @@ function IdeaBoard({ loggedIn }) {
           )
         })
         :
-        <h1 key={errors}>{errors}</h1>
+        errors.map(err => {
+          return (
+            <h1 key={err}>{err}</h1>
+          )
+        })
       }
     </div>
   )

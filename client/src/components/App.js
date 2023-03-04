@@ -7,7 +7,7 @@ import IdeaBoard from './IdeaBoard'
 
 function App() {
   const [user, setUser] = useState(null)
-  const [loggedIn, setLoggedIn] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('/me').then(r => {

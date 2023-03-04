@@ -9,6 +9,6 @@ class IdeasController < ApplicationController
   private
 
   def authorize
-    render json: { errors: ["Not Authorized to View Content.  Please Log In to Continue"] }, status: :unauthorized unless session.include? :user_id
+    render json: { errors: ["Not Authorized to View Content."] }, status: :unauthorized unless session.include? :user_id
   end
 end
