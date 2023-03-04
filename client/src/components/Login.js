@@ -18,6 +18,7 @@ function Login({ setUser, setLoggedIn }) {
         r.json().then(user =>{
           setUser(user)
           setLoggedIn(true)
+          setErrors([])
         })
       } else {
         r.json().then(err => setErrors(err.errors))

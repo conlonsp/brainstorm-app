@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Login from './Login';
 
-function Dashboard({ user, setUser, setLoggedIn }) {
+function Dashboard({ user, setUser, loggedIn, setLoggedIn }) {
   return (
     <div>
       {!user ? 
