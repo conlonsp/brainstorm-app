@@ -12,14 +12,11 @@ class SessionsController < ApplicationController
     session[:user_id]
     session.delete :user_id
     head :no_content
-    # else
-    #   render json: { errors: ['Please log in'] }, status: :unauthorized
-    # end
   end
 
   private
 
   def render_unauthorized
-    render json: { errors: ["Invalid username or password"] }, status: :unauthorized unless session.include? :user_id
+    render json: { errors: ["Invalid username or password"] }, status: :unauthorized
   end
 end
