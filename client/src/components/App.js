@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Dashboard from './Dashboard';
+import Dashboard from '../pages/Dashboard';
 import NavBar from './NavBar';
-import Signup from './Signup';
-import IdeaBoard from './IdeaBoard'
+import IdeaBoard from '../pages/IdeaBoard'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -17,7 +16,7 @@ function App() {
     })
   }, [])
 
-  
+  // if(!user) return <Login />
 
   return (
     <div>
@@ -30,9 +29,9 @@ function App() {
             user={user}
             setUser={setUser}
           />}/>
-          <Route path='/signup' element={<Signup
+          {/* <Route path='/signup' element={<SignupForm
             setUser={setUser}
-          />}/>
+          />}/> */}
           <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
         </Routes>
     </div>

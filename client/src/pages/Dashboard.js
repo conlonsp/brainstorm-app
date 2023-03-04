@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Login from './Login';
+import LoginForm from '../components/LoginForm';
 
 function Dashboard({ user, setUser }) {
   return (
@@ -8,7 +8,7 @@ function Dashboard({ user, setUser }) {
       {!user ? 
         <div>
           <h1>Please Login or Signup</h1>
-          <Login
+          <LoginForm
             setUser={setUser}
           />
           <button id='signup'><NavLink to='/signup'>Signup</NavLink></button>
