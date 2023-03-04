@@ -7,7 +7,7 @@ import IdeaBoard from './IdeaBoard'
 
 function App() {
   const [user, setUser] = useState(null)
-  const [loggedIn, setLoggedIn] = useState(false)
+  // const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -17,28 +17,22 @@ function App() {
     })
   }, [])
 
-  console.log(loggedIn)
   
 
   return (
     <div>
       <NavBar
         setUser={setUser}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
       />
         <Routes>
           <Route path='/' element={<Dashboard
             user={user}
             setUser={setUser}
-            loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn}
           />}/>
           <Route path='/signup' element={<Signup
             setUser={setUser}
-            setLoggedIn={setLoggedIn}
           />}/>
-          <Route path='/ideaboard' element={<IdeaBoard loggedIn={loggedIn}/>}/>
+          <Route path='/ideaboard' element={<IdeaBoard />}/>
         </Routes>
     </div>
   )
