@@ -5,7 +5,7 @@ import Login from './Login';
 function Dashboard({ user, setUser }) {
   return (
     <div>
-      { ? 
+      {!user ? 
         <div>
           <h1>Please Login or Signup</h1>
           <Login

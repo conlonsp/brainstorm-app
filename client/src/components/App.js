@@ -22,6 +22,7 @@ function App() {
   return (
     <div>
       <NavBar
+        user={user}
         setUser={setUser}
       />
         <Routes>
@@ -32,7 +33,7 @@ function App() {
           <Route path='/signup' element={<Signup
             setUser={setUser}
           />}/>
-          <Route path='/ideaboard' element={<IdeaBoard />}/>
+          <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
         </Routes>
     </div>
   )
