@@ -4,7 +4,7 @@ function Signup({ setUser }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  const [imageURL, setImageURL] = useState('')
+  const [avatarUrl, setAvatarUrl] = useState('')
   const [bio, setBio] = useState('')
   const [errors, setErrors] = useState([])
   
@@ -20,7 +20,7 @@ function Signup({ setUser }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
-        imageURL,
+        avatarUrl,
         bio
       }),
     }).then(r => {
@@ -29,7 +29,7 @@ function Signup({ setUser }) {
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')
-        setImageURL('')
+        setAvatarUrl('')
         setBio('')
       } else {
         r.json().then(err => setErrors(err.errors))
@@ -71,13 +71,13 @@ function Signup({ setUser }) {
           onChange={e => setPasswordConfirmation(e.target.value)}
         />
         <br/>
-        <label htmlFor='imageURL'>Image URL: </label>
+        <label htmlFor='avatarUrl'>Avatar URL: </label>
         <br/>
         <input
-          type='imageURL'
-          id='imageURL'
-          value={imageURL}
-          onChange={e => setImageURL(e.target.value)}
+          type='text'
+          id='avatarUrl'
+          value={avatarUrl}
+          onChange={e => setAvatarUrl(e.target.value)}
         />
         <br/>
         <label htmlFor='bio'>Bio: </label>
