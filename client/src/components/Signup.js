@@ -4,6 +4,8 @@ function Signup({ setUser }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const [imageURL, setImageURL] = useState('')
+  const [bio, setBio] = useState('')
   const [errors, setErrors] = useState([])
   
   
@@ -17,7 +19,9 @@ function Signup({ setUser }) {
       body: JSON.stringify({
         username,
         password,
-        password_confirmation: passwordConfirmation
+        password_confirmation: passwordConfirmation,
+        imageURL,
+        bio
       }),
     }).then(r => {
       if(r.ok) {
@@ -25,6 +29,8 @@ function Signup({ setUser }) {
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')
+        setImageURL('')
+        setBio('')
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -63,6 +69,24 @@ function Signup({ setUser }) {
           value={passwordConfirmation}
           autoComplete='current-password'
           onChange={e => setPasswordConfirmation(e.target.value)}
+        />
+        <br/>
+        <label htmlFor='imageURL'>Image URL: </label>
+        <br/>
+        <input
+          type='imageURL'
+          id='imageURL'
+          value={imageURL}
+          onChange={e => setImageURL(e.target.value)}
+        />
+        <br/>
+        <label htmlFor='bio'>Bio: </label>
+        <br/>
+        <textarea
+          rows='4'
+          id='bio'
+          value={bio}
+          onChange={e => setBio(e.target.value)}
         />
         <br/>
         <button>Signup</button>
