@@ -75,7 +75,7 @@ function Signup({ setUser }) {
         <br/>
         <input
           type='text'
-          id='avatarUrl'
+          id='avatar_url'
           value={avatarUrl}
           onChange={e => setAvatarUrl(e.target.value)}
         />
