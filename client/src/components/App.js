@@ -16,7 +16,7 @@ function App() {
     })
   }, [])
 
-  // if(!user) return <Login />
+  if(!user) return <LoginSignup />
 
   return (
     <div>
@@ -24,16 +24,13 @@ function App() {
         user={user}
         setUser={setUser}
       />
-        <Routes>
-          <Route path='/' element={<Dashboard
-            user={user}
-            setUser={setUser}
-          />}/>
-          {/* <Route path='/signup' element={<SignupForm
-            setUser={setUser}
-          />}/> */}
-          <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Dashboard
+          user={user}
+          setUser={setUser}
+        />}/>
+        <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
+      </Routes>
     </div>
   )
 }
