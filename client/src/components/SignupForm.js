@@ -20,7 +20,7 @@ function Signup({ setUser }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
-        avatarUrl,
+        avatar_url: avatarUrl,
         bio
       }),
     }).then(r => {
@@ -71,7 +71,7 @@ function Signup({ setUser }) {
           onChange={e => setPasswordConfirmation(e.target.value)}
         />
         <br/>
-        <label htmlFor='avatarUrl'>Avatar URL: </label>
+        <label htmlFor='avatar_url'>Avatar URL: </label>
         <br/>
         <input
           type='text'
