@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import NavBar from './NavBar';
 import IdeaBoard from '../pages/IdeaBoard'
+import LoginSignup from '../pages/LoginSignup';
 
 function App() {
   const [user, setUser] = useState(null)
