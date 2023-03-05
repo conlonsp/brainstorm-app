@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function newIdea() {
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
 
   return (
     <form>
