@@ -4,6 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import NavBar from './NavBar';
 import IdeaBoard from '../pages/IdeaBoard'
 import LoginSignup from '../pages/LoginSignup';
+import NewIdea from '../pages/NewIdea'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -30,6 +31,7 @@ function App() {
           setUser={setUser}
         />}/>
         <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
+        <Route path='/newidea' element={<NewIdea />} />
       </Routes>
     </div>
   )
