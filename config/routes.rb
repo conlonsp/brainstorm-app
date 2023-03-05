@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # resources :comments
   resources :ideas, only: [:index, :show]
-  put '/ideas/:id/likes', to: 'ideas#increment_likes'
+  patch '/ideas/:id/likes', to: 'likes#increment_likes'
 
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'

@@ -10,12 +10,6 @@ class IdeasController < ApplicationController
     render json: Idea.find(params[:id]), status: :ok
   end
 
-  def increment_likes
-    idea = Idea.find_by(id: params[:id])
-    idea.update(idea.likes + 1)
-    render json: idea
-  end
-
   private
 
   def authorize
