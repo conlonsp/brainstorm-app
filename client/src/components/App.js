@@ -16,7 +16,7 @@ function App() {
     })
   }, [])
 
-  if(!user) return <LoginSignup />
+  if(!user) return <LoginSignup setUser={setUser} />
 
   return (
     <div>
