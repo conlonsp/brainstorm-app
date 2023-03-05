@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   before_action :authorize
 
   def index
-    render json: Idea.all, status: :ok
+    render json: Idea.all, include: :user, status: :ok
   end
 
   private

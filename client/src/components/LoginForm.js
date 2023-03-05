@@ -43,7 +43,7 @@ function Login({ setUser }) {
         <input
           type='password'
           id='password'
-          autoComplete='current-password'
+          autoComplete='off'
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
