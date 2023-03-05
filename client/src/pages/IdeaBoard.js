@@ -16,6 +16,13 @@ function IdeaBoard({ user }) {
     })
   }, [])
 
+  function handleLikes(updatedLikes) {
+    const updatedLikesArr = ideas.map(idea => {
+      return idea.id === updatedLikes.id ? updatedLikes : idea
+    })
+    setIdeas(updatedLikesArr)
+  }
+
   console.log(errors)
 
   return (
@@ -24,7 +31,7 @@ function IdeaBoard({ user }) {
       {user ?
         ideas.map(idea => {
           return (
-            <Idea key={idea.id} idea={idea} />
+            <Idea key={idea.id} idea={idea} onUpdateLikes={handleLikes}/>
           )
         })
         :
