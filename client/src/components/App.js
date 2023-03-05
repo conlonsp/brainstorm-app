@@ -7,7 +7,6 @@ import LoginSignup from '../pages/LoginSignup';
 
 function App() {
   const [user, setUser] = useState(null)
-  // const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('/me').then(r => {
