@@ -25,13 +25,11 @@ function NewIdea({ user }) {
         onChange={e => setContent(e.target.value)}
       />
       <input
-        // type='hidden'
+        type='hidden'
         id='user_id'
         value={user.id}
       />
-      {/* <input
-        // type='hidden'
-      /> */}
+      <br/>
       <button>Submit</button>
     </form>
   )
