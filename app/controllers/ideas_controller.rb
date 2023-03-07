@@ -18,6 +18,12 @@ class IdeasController < ApplicationController
     render json: idea, status: :created
   end
 
+  def destroy
+    idea = Idea.find(params[:id])
+    idea.destroy
+    head :no_content
+  end
+
   private
 
   def idea_params
