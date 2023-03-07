@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   before_action :authorize
 
@@ -29,6 +30,10 @@ class IdeasController < ApplicationController
 
   def render_unprocessable_entity(e)
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+  end
+
+  def render_not_found
+    render json: { errors: ['Idea not found'] }, status: :not_found
   end
 
 end

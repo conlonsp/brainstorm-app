@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # resources :comments
-  resources :ideas, only: [:index, :show, :create]
+  resources :ideas, only: [:index, :show, :create, :destroy]
   patch '/ideas/:id/likes', to: 'likes#increment_likes'
 
   post '/signup', to: 'users#create'
