@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function NewIdea({ user }) {
+function NewIdea({ user, ideas, setIdeas }) {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -19,7 +19,7 @@ function NewIdea({ user }) {
       })
     }).then(r => {
       if(r.ok) {
-        r.json().then(newIdea => console.log(newIdea))
+        r.json().then(newIdea => setIdeas([...ideas, newIdea]))
       } else {
         r.json().then(err => setErrors(err.errors))
       }

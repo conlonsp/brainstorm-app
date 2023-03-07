@@ -8,6 +8,7 @@ import NewIdea from '../pages/NewIdea'
 
 function App() {
   const [user, setUser] = useState(null)
+  const [ideas, setIdeas] = useState([])
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -26,12 +27,26 @@ function App() {
         setUser={setUser}
       />
       <Routes>
-        <Route path='/' element={<Dashboard
-          user={user}
-          setUser={setUser}
-        />}/>
-        <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
-        <Route path='/newidea' element={<NewIdea user={user}/>} />
+        <Route path='/' element={
+          <Dashboard
+            user={user}
+            setUser={setUser}
+          />
+        }/>
+        <Route path='/ideaboard' element={
+          <IdeaBoard
+            user={user}
+            ideas={ideas}
+            setIdeas={setIdeas}
+          />
+        }/>
+        <Route path='/newidea' element={
+          <NewIdea
+            user={user}
+            ideas={ideas}
+            setIdeas={setIdeas}
+          />
+        }/>
       </Routes>
     </div>
   )
