@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
-function newIdea() {
+function NewIdea() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  
 
   return (
     <form>
@@ -12,7 +13,7 @@ function newIdea() {
         type='text'
         id='title'
         value={title}
-        onChange={handleNewIdea}
+        onChange={e => setTitle(e.target.value)}
       />
       <br/>
       <label htmlFor='content'>Content: </label>
@@ -21,10 +22,19 @@ function newIdea() {
         rows='4'
         id='content'
         value={content}
-        onChange={handleNewIdea}
+        onChange={e => setContent(e.target.value)}
       />
+      <input
+        // type='hidden'
+        id='user_id'
+        value={user.id}
+      />
+      {/* <input
+        // type='hidden'
+      /> */}
+      <button>Submit</button>
     </form>
   )
 }
 
-export default newIdea
+export default NewIdea
