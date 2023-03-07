@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :ideas
-  has_many :comments
+  has_many :comments, through: :ideas
 
   validates :username, presence: true
   validates :password, presence: true
