@@ -52,7 +52,7 @@ function Login({ setUser }) {
       </form>
       {errors.map(err => {
         return (
-          <h1 key={err}>{err}</h1>
+          <p key={err} style={{color: 'red'}}>{err}</p>
         )
       })}
     </div>

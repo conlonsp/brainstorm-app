@@ -17,6 +17,7 @@ function App() {
       }
     })
   }, [])
+  
 
   if(!user) return <LoginSignup setUser={setUser} />
 

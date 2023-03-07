@@ -57,7 +57,7 @@ function NewIdea({ user, ideas, setIdeas }) {
       </form>
       {errors.map(err => {
         return (
-          <p key={err}>{err}</p>
+          <p key={err} style={{color: 'red'}}>{err}</p>
         )
       })}
     </div>

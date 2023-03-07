@@ -45,7 +45,7 @@ function IdeaBoard({ user, ideas, setIdeas }) {
         :
         errors.map(err => {
           return (
-            <h1 key={err}>{err}</h1>
+            <p key={err}>{err}</p>
           )
         })
       }

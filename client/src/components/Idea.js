@@ -23,14 +23,15 @@ function Idea({ idea, onUpdateLikes, onIdeaDelete }) {
       }
     })
   }
+  
 
   return (
     <div>
       <h1>{title}</h1>
-      <h1>By: {user.username}</h1>
-      <p>{content}</p>
+      <p>By: {user.username}</p>
       <h3>{likes} <button onClick={updateLikes}>❤️</button> </h3>
       <button onClick={handleDelete}>X</button>
+      <button>Update</button>
     </div>
   )
 }
