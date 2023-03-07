@@ -18,6 +18,7 @@ function Idea({ idea, onUpdateLikes }) {
       <h1>By: {idea.user.username}</h1>
       <p>{idea.content}</p>
       <h3>{idea.likes} <button onClick={updateLikes}>❤️</button> </h3>
+      <button>X</button>
     </div>
   )
 }

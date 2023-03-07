@@ -14,7 +14,7 @@ function IdeaBoard({ user, ideas, setIdeas }) {
         r.json().then(err => setErrors(err.errors))
       }
     })
-  }, [])
+  }, [setIdeas])
 
   function handleLikes(updatedLikes) {
     const updatedLikesArr = ideas.map(idea => {
@@ -22,8 +22,6 @@ function IdeaBoard({ user, ideas, setIdeas }) {
     })
     setIdeas(updatedLikesArr)
   }
-
-  console.log(errors)
 
   return (
     <div>
