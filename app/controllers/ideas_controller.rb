@@ -18,6 +18,12 @@ class IdeasController < ApplicationController
     render json: idea, status: :created
   end
 
+  def update
+    idea = Idea.find(params[:id])
+    idea.update!(idea_params)
+    render json: idea, status: :accepted
+  end
+
   def destroy
     idea = Idea.find(params[:id])
     idea.destroy
