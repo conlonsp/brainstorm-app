@@ -1,12 +1,34 @@
 import React, { useState } from 'react'
 
 function NewIdea({ user }) {
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [errors, setErrors] = useState([])
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const userId = user.id
+    fetch('/ideas', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        title,
+        content,
+        user_id: userId
+      })
+    }).then(r => {
+      if(r.ok) {
+        r.json().then(newIdea => console.log(newIdea))
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
+    })
+  }
   
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor='title'>Title: </label>
       <br/>
       <input
