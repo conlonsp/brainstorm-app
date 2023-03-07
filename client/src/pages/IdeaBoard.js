@@ -23,13 +23,23 @@ function IdeaBoard({ user, ideas, setIdeas }) {
     setIdeas(updatedLikesArr)
   }
 
+  function handleDelete(id) {
+    const updatedIdeaArr = ideas.filter(idea => idea.id !== id)
+    setIdeas(updatedIdeaArr)
+  }
+
   return (
     <div>
       <h1>Idea Board</h1>
       {user ?
         ideas.map(idea => {
           return (
-            <Idea key={idea.id} idea={idea} onUpdateLikes={handleLikes}/>
+            <Idea
+              key={idea.id}
+              idea={idea}
+              onUpdateLikes={handleLikes}
+              onIdeaDelete={handleDelete}
+            />
           )
         })
         :
