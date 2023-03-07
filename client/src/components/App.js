@@ -31,7 +31,7 @@ function App() {
           setUser={setUser}
         />}/>
         <Route path='/ideaboard' element={<IdeaBoard user={user}/>}/>
-        <Route path='/newidea' element={<NewIdea />} />
+        <Route path='/newidea' element={<NewIdea user={user}/>} />
       </Routes>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function NewIdea() {
+function NewIdea({ user }) {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   
