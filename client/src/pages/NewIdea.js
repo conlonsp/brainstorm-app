@@ -28,32 +28,39 @@ function NewIdea({ user, ideas, setIdeas }) {
   
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='title'>Title: </label>
-      <br/>
-      <input
-        type='text'
-        id='title'
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
-      <br/>
-      <label htmlFor='content'>Content: </label>
-      <br/>
-      <textarea
-        rows='4'
-        id='content'
-        value={content}
-        onChange={e => setContent(e.target.value)}
-      />
-      <input
-        type='hidden'
-        id='user_id'
-        value={user.id}
-      />
-      <br/>
-      <button>Submit</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='title'>Title: </label>
+        <br/>
+        <input
+          type='text'
+          id='title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+        <br/>
+        <label htmlFor='content'>Content: </label>
+        <br/>
+        <textarea
+          rows='4'
+          id='content'
+          value={content}
+          onChange={e => setContent(e.target.value)}
+        />
+        <input
+          type='hidden'
+          id='user_id'
+          value={user.id}
+        />
+        <br/>
+        <button>Submit</button>
+      </form>
+      {errors.map(err => {
+        return (
+          <p key={err}>{err}</p>
+        )
+      })}
+    </div>
   )
 }
 
