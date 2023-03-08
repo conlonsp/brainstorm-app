@@ -2,7 +2,7 @@ import React from 'react'
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
 
-  const { id, title, likes, user} = idea
+  const { id, title, likes, user: ideaUser} = idea
 
   function updateLikes() {
     const updateLikes = likes + 1
@@ -27,9 +27,9 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
   return (
     <div>
       <h1>{title}</h1>
-      <p>By: {user.username}</p>
+      <p>By: {ideaUser.username}</p>
       <h3>{likes} <button onClick={updateLikes}>❤️</button> </h3>
-      <button onClick={handleDelete}>X</button>
+      {user.id === idea.user.id ? <button onClick={handleDelete}>X</button> : null}
       <button>View More</button>
     </div>
   )
