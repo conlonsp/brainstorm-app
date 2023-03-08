@@ -19,7 +19,11 @@ function NewIdea({ user, ideas, setIdeas }) {
       })
     }).then(r => {
       if(r.ok) {
-        r.json().then(newIdea => setIdeas([...ideas, newIdea]))
+        r.json().then(newIdea => {
+          setIdeas([...ideas, newIdea])
+          setTitle('')
+          setContent('')
+        })
       } else {
         r.json().then(err => setErrors(err.errors))
       }
