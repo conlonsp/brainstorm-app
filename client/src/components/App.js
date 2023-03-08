@@ -5,10 +5,12 @@ import NavBar from './NavBar';
 import IdeaBoard from '../pages/IdeaBoard'
 import LoginSignup from '../pages/LoginSignup';
 import NewIdea from '../pages/NewIdea'
+import IdeaDetails from '../pages/IdeaDetails';
 
 function App() {
   const [user, setUser] = useState(null)
   const [ideas, setIdeas] = useState([])
+  const [idea, setIdea] = useState({})
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -17,8 +19,13 @@ function App() {
       }
     })
   }, [])
-  
 
+  function grabIdeaDetails(idea) {
+    fetch(`/ideas/${idea.id}`)
+    .then(r => r.json())
+    .then(idea => setIdea(idea))
+  }
+  
   if(!user) return <LoginSignup setUser={setUser} />
 
   return (
@@ -39,6 +46,7 @@ function App() {
             user={user}
             ideas={ideas}
             setIdeas={setIdeas}
+            onIdeaGrab={grabIdeaDetails}
           />
         }/>
         <Route path='/newidea' element={
@@ -46,6 +54,11 @@ function App() {
             user={user}
             ideas={ideas}
             setIdeas={setIdeas}
+          />
+        }/>
+        <Route path='/ideadetails' element={
+          <IdeaDetails
+            idea={idea}
           />
         }/>
       </Routes>

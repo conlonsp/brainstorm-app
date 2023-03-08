@@ -1,9 +1,13 @@
 import React from 'react'
 
-function IdeaDetails() {
+function IdeaDetails({ idea }) {
 
   return (
-    <h1>Idea Details</h1>
+    <div>
+      <h1>Idea Details</h1>
+      {idea.title}
+    </div>
+
   )
 }
 

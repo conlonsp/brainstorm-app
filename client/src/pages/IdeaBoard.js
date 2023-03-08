@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Idea from '../components/Idea';
 
-function IdeaBoard({ user, ideas, setIdeas }) {
+function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab }) {
   
   const [errors, setErrors] = useState([])
 
@@ -40,6 +40,7 @@ function IdeaBoard({ user, ideas, setIdeas }) {
               idea={idea}
               onUpdateLikes={handleLikes}
               onIdeaDelete={handleDelete}
+              onIdeaGrab={onIdeaGrab}
             />
           )
         })

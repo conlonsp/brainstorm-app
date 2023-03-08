@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Idea({ user, idea, onUpdateLikes, onIdeaDelete, setIdea }) {
+function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   const { id, title, likes, user: ideaUser} = idea
 
@@ -28,7 +28,7 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, setIdea }) {
   }
 
   function grabIdea() {
-    setIdea(idea)
+    onIdeaGrab(idea)
   }
   
   return (
