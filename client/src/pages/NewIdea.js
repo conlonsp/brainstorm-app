@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function NewIdea({ user, ideas, setIdeas }) {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [errors, setErrors] = useState([])
+
+  let navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -23,6 +26,8 @@ function NewIdea({ user, ideas, setIdeas }) {
           setIdeas([...ideas, newIdea])
           setTitle('')
           setContent('')
+          navigate('/ideaboard')
+          
         })
       } else {
         r.json().then(err => setErrors(err.errors))

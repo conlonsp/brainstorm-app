@@ -45,7 +45,10 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       <br/>
       <button onClick={() => {
         grabIdea()
-        navigate('/ideadetails')}}>View More</button>
+        navigate('/ideadetails')}}
+      >
+        View More
+      </button>
     </div>
   )
 }
