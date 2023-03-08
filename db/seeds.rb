@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts '...seeding users 🧙🏽‍♂️'
 
 user1 = User.create(
   username: 'samc',
@@ -37,6 +38,8 @@ user4 = User.create(
   bio: 'Whatever',
   avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
 )
+
+puts '...seeding ideas 💡'
 
 idea1 = Idea.create(
   title: 'Automatic Ball Thrower',
@@ -75,9 +78,11 @@ idea6 = Idea.create(
   user_id: 4,
 )
 
+puts '...seeding comments 💬'
+
 10.times do
   Comment.create(
-    content: Faker::Lorem.sentence(word_count: 10)
+    content: Faker::Lorem.sentence(word_count: 10),
     user_id: User.all.sample.id,
     idea_id: Idea.all.sample.id
   )
