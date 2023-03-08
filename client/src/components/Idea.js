@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Idea({ idea, onUpdateLikes, onIdeaDelete }) {
+function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
 
   const { id, title, likes, user} = idea
 
@@ -24,13 +24,13 @@ function Idea({ idea, onUpdateLikes, onIdeaDelete }) {
     })
   }
   
-
   return (
     <div>
       <h1>{title}</h1>
       <p>By: {user.username}</p>
       <h3>{likes} <button onClick={updateLikes}>❤️</button> </h3>
       <button onClick={handleDelete}>X</button>
+      <button>View More</button>
     </div>
   )
 }

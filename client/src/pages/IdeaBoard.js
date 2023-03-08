@@ -36,6 +36,7 @@ function IdeaBoard({ user, ideas, setIdeas }) {
           return (
             <Idea
               key={idea.id}
+              user={user}
               idea={idea}
               onUpdateLikes={handleLikes}
               onIdeaDelete={handleDelete}
