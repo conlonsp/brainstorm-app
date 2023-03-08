@@ -28,8 +28,14 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
     <div>
       <h1>{title}</h1>
       <p>By: {ideaUser.username}</p>
-      <h3>{likes} <button onClick={updateLikes}>❤️</button> </h3>
-      {user.id === idea.user.id ? <button onClick={handleDelete}>X</button> : null}
+      <span>
+        {user.id !== idea.user.id ? <button onClick={updateLikes}>❤️</button> : null}
+        &nbsp;
+        {likes} likes
+      </span>
+      <br/>
+      {user.id === idea.user.id ? <button onClick={handleDelete}>Delete Idea</button> : null}
+      <br/>
       <button>View More</button>
     </div>
   )
