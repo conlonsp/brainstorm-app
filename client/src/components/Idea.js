@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
+function Idea({ user, idea, onUpdateLikes, onIdeaDelete, setIdea }) {
 
   const { id, title, likes, user: ideaUser} = idea
+
+  let navigate = useNavigate()
 
   function updateLikes() {
     const updateLikes = likes + 1
@@ -23,6 +26,10 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
       }
     })
   }
+
+  function grabIdea() {
+    setIdea(idea)
+  }
   
   return (
     <div>
@@ -36,7 +43,9 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete }) {
       <br/>
       {user.id === idea.user.id ? <button onClick={handleDelete}>Delete Idea</button> : null}
       <br/>
-      <button>View More</button>
+      <button onClick={() => {
+        grabIdea()
+        navigate('/ideadetails')}}>View More</button>
     </div>
   )
 }
