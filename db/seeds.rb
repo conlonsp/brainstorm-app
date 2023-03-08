@@ -75,5 +75,13 @@ idea6 = Idea.create(
   user_id: 4,
 )
 
+10.times do
+  Comment.create(
+    content: Faker::Lorem.sentence(word_count: 10)
+    user_id: User.all.sample.id,
+    idea_id: Idea.all.sample.id
+  )
+end
+
 
 
