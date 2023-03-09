@@ -5,27 +5,35 @@ function IdeaDetails({ idea }) {
   const {id, title, content, likes, user} = idea
 
   const [comments, setComments] = useState([])
-  
-  useEffect(() => {
-    fetch(`/ideas/${idea.id}/comments`)
-    .then(r => r.json())
-    .then(comments => setComments(comments))
-  }, [])
-
-  const ideaComments = comments.filter(comment => comment.idea_id === idea.id)
-  
+  const [users, setUsers] = useState([])
 
   let navigate = useNavigate()
+  
+  useEffect(() => {
+    fetch(`ideas/${id}/comments`)
+    .then(r => r.json())
+    .then(comments => setComments(comments))
+  }, [id])
+
+  useEffect(() => {
+    fetch(`/users`)
+    .then(r => r.json())
+    .then(users => setUsers(users))
+  }, [])
+
+  // let ideaUser = users.find(user => user.id === userId)
+
+  console.log(user)
 
   return (
     <div>
       <h1>Idea Details</h1>
       <h2>{title}</h2>
       <p>{content}</p>
-      {/* <h3>By: {user.username}</h3> */}
+      {/* <h3>By: {ideaUser.username}</h3> */}
       {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
       <h2>Comments:</h2>
-      {ideaComments.length > 0 ? ideaComments.map(com => {
+      {comments.length > 0 ? comments.map(com => {
         return (
           <li key={com.id}>{com.content}</li>
         )
@@ -33,7 +41,9 @@ function IdeaDetails({ idea }) {
       : 
       <h3>No Comments Yet!</h3>
       }
-      <button onClick={() => navigate('/ideaboard')}>
+      <button onClick={() => {
+        navigate('/ideaboard')
+      }}>
         Back to Idea Board
       </button>
     </div>
