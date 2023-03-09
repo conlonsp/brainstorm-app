@@ -17,8 +17,8 @@ user1 = User.create(
 
 user2 = User.create(
   username: 'noot',
-  password: 'bark',
-  password_confirmation: 'bark',
+  password: 'barking',
+  password_confirmation: 'barking',
   bio: 'I like playing fetch!',
   avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
 )
@@ -34,7 +34,7 @@ user3 = User.create(
 user4 = User.create(
   username: 'coolkid96',
   password: 'titetite',
-  password_confirmation: 'tite',
+  password_confirmation: 'titetite',
   bio: 'Whatever',
   avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
 )
@@ -44,7 +44,6 @@ puts '...seeding ideas 💡'
 idea1 = Idea.create(
   title: 'Automatic Ball Thrower',
   content: 'It throws balls automatically so Noot leaves me alone.',
-  likes: 0,
   user_id: 1,
 )
 
