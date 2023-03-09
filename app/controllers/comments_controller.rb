@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def index
-    Comment.all, render json: status: :ok
+    render json: Comment.all, status: :ok
   end
   
 end
