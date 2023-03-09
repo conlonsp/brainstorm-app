@@ -6,7 +6,8 @@ function IdeaDetails({ idea }) {
 
   let navigate = useNavigate()
 
-  console.log(comments)
+  
+  
 
   return (
     <div>
@@ -14,13 +15,16 @@ function IdeaDetails({ idea }) {
       <h2>{title}</h2>
       <p>{content}</p>
       <h3>By: {user.username}</h3>
-      <br/>
-      {/* <h2>Comments:</h2>
-      {comments.map(com => {
+      {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
+      <h2>Comments:</h2>
+      {comments.length > 0 ? comments.map(com => {
         return (
-          <li>{com.content}</li>
+          <li key={com.id}>{com.content}</li>
         )
-      })} */}
+      })
+      : 
+      <h2>No Comments Yet!</h2>
+      }
       <button onClick={() => navigate('/ideaboard')}>
         Back to Idea Board
       </button>
