@@ -5,7 +5,7 @@ function IdeaDetails({ idea }) {
   const {id, title, content, likes, user} = idea
 
   const [comments, setComments] = useState([])
-  const [users, setUsers] = useState([])
+  // const [users, setUsers] = useState([])
 
   let navigate = useNavigate()
   
@@ -15,13 +15,11 @@ function IdeaDetails({ idea }) {
     .then(comments => setComments(comments))
   }, [id])
 
-  useEffect(() => {
-    fetch(`/users`)
-    .then(r => r.json())
-    .then(users => setUsers(users))
-  }, [])
-
-  // let ideaUser = users.find(user => user.id === userId)
+  // useEffect(() => {
+  //   fetch(`/users`)
+  //   .then(r => r.json())
+  //   .then(users => setUsers(users))
+  // }, [])
 
   console.log(user)
 
@@ -30,7 +28,7 @@ function IdeaDetails({ idea }) {
       <h1>Idea Details</h1>
       <h2>{title}</h2>
       <p>{content}</p>
-      {/* <h3>By: {ideaUser.username}</h3> */}
+      <h3>By: {user.username}</h3>
       {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
