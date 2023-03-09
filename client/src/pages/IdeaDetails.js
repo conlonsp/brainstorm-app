@@ -6,9 +6,6 @@ function IdeaDetails({ idea }) {
 
   let navigate = useNavigate()
 
-  
-  
-
   return (
     <div>
       <h1>Idea Details</h1>
@@ -23,7 +20,7 @@ function IdeaDetails({ idea }) {
         )
       })
       : 
-      <h2>No Comments Yet!</h2>
+      <h3>No Comments Yet!</h3>
       }
       <button onClick={() => navigate('/ideaboard')}>
         Back to Idea Board
@@ -33,27 +30,3 @@ function IdeaDetails({ idea }) {
 }
 
 export default IdeaDetails
-
-// {
-//   "id": 2,
-//   "title": "Super Fetch Machine",
-//   "content": "Machine that doesn't stop playing fetch with me like Sam does.",
-//   "likes": 0,
-//   "user": {
-//       "id": 2,
-//       "username": "lacroix",
-//       "bio": "Drink me.",
-//       "avatar_url": "https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M",
-//       "password_digest": "$2a$12$2YHvc0z0FAgpdQK6TiC0cewEYnmsqA8ORi0vuzkQMkgOsOX8xrJvG",
-//       "created_at": "2023-03-08T22:44:05.131Z",
-//       "updated_at": "2023-03-08T22:44:05.131Z"
-//   },
-//   "comments": [
-//       {
-//           "id": 4,
-//           "content": "Aspernatur provident ad error ducimus quam est sapiente sit facere.",
-//           "user_id": 2,
-//           "idea_id": 2,
-//           "created_at": "2023-03-08T22:44:06.120Z",
-//           "updated_at": "2023-03-08T22:44:06.120Z"
-//       },
