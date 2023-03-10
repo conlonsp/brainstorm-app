@@ -1,8 +1,8 @@
 import React from 'react'
 
-function CommentForm({ comments, setComments }) {
+function CommentForm({ comments, setComments, idea, loggedUser }) {
 
-  
+
 
   return (
     <div>
@@ -14,10 +14,13 @@ function CommentForm({ comments, setComments }) {
         />
         <input
           type='hidden'
-
+          id='user_id'
+          value={loggedUser.id}
         />
         <input
           type='hidden'
+          id='idea_id'
+          value={idea.id}
         />
         <button>Submit</button>
       </form>

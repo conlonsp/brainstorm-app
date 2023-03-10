@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 
-function IdeaDetails({ idea }) {
+function IdeaDetails({ idea, loggedUser }) {
   const {id, title, content, likes, user} = idea
 
   const [comments, setComments] = useState([])
@@ -32,7 +32,12 @@ function IdeaDetails({ idea }) {
         : 
         <h3>No Comments Yet!</h3>
       }
-      <CommentForm comments={comments} setComments={setComments} />
+      <CommentForm
+        comments={comments}
+        setComments={setComments}
+        idea={idea}
+        loggedUser={loggedUser}
+      />
       <button onClick={() => {
         navigate('/ideaboard')
       }}>

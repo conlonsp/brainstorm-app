@@ -59,6 +59,7 @@ function App() {
         <Route path='/ideadetails' element={
           <IdeaDetails
             idea={idea}
+            loggedUser={user}
           />
         }/>
       </Routes>
