@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Comment from '../components/Comment'
 
 function IdeaDetails({ idea }) {
   const {id, title, content, likes, user} = idea
@@ -26,10 +27,7 @@ function IdeaDetails({ idea }) {
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
         return (
-          <div key={com.id}>
-            <h4>{com.user.username} says...</h4>
-            <p>{com.content}</p>
-          </div>
+          <Comment key={com.id} com={com} />
         )
       })
       : 
