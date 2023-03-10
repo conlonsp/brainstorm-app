@@ -5,7 +5,6 @@ function IdeaDetails({ idea }) {
   const {id, title, content, likes, user} = idea
 
   const [comments, setComments] = useState([])
-  // const [users, setUsers] = useState([])
 
   let navigate = useNavigate()
   
@@ -14,12 +13,6 @@ function IdeaDetails({ idea }) {
     .then(r => r.json())
     .then(comments => setComments(comments))
   }, [id])
-
-  // useEffect(() => {
-  //   fetch(`/users`)
-  //   .then(r => r.json())
-  //   .then(users => setUsers(users))
-  // }, [])
 
   console.log(user)
 

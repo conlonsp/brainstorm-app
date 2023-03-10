@@ -9,5 +9,12 @@ class CommentsController < ApplicationController
     end
     render json: comments, include: [:idea, :user], status: :ok
   end
+
+  def create
+    comment = Comment.create!(comment_params)
+    render json: comment, status: :created
+  end
+
+
   
 end
