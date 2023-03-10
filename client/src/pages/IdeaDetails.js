@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Comment from '../components/Comment'
+import CommentForm from '../components/CommentForm'
 
 function IdeaDetails({ idea }) {
   const {id, title, content, likes, user} = idea
@@ -14,8 +15,6 @@ function IdeaDetails({ idea }) {
     .then(r => r.json())
     .then(comments => setComments(comments))
   }, [id])
-
-  console.log(user)
 
   return (
     <div>
@@ -33,6 +32,7 @@ function IdeaDetails({ idea }) {
         : 
         <h3>No Comments Yet!</h3>
       }
+      <CommentForm />
       <button onClick={() => {
         navigate('/ideaboard')
       }}>

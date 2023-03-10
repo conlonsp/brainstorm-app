@@ -3,7 +3,23 @@ import React from 'react'
 function CommentForm() {
 
   return (
-    <h1>Comment Form</h1>
+    <div>
+      <form>
+        <label htmlFor='content'>Leave a comment</label>
+        <br/>
+        <textarea
+          type='text'
+        />
+        <input
+          type='hidden'
+        
+        />
+        <input
+          type='hidden'
+        />
+        <button>Submit</button>
+      </form>
+    </div>
   )
 }
 
