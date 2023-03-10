@@ -33,7 +33,10 @@ function IdeaDetails({ idea }) {
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
         return (
-          <li key={com.id}>{com.content}</li>
+          <div key={com.id}>
+            <h4>{com.user.username} says...</h4>
+            <p>{com.content}</p>
+          </div>
         )
       })
       : 

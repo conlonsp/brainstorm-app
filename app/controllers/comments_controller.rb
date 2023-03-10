@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     else
       comments = Comment.all
     end
-    render json: comments, include: :idea, status: :ok
+    render json: comments, include: [:idea, :user], status: :ok
   end
   
 end
