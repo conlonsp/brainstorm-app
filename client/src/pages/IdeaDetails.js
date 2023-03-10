@@ -30,8 +30,8 @@ function IdeaDetails({ idea }) {
           <Comment key={com.id} com={com} />
         )
       })
-      : 
-      <h3>No Comments Yet!</h3>
+        : 
+        <h3>No Comments Yet!</h3>
       }
       <button onClick={() => {
         navigate('/ideaboard')
