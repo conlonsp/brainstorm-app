@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 
 function CommentForm({ comments, setComments, idea, loggedUser }) {
 
-
-
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  //   fetch()
+  // }
 
 
   return (
@@ -13,6 +15,8 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
         <br/>
         <textarea
           type='text'
+          id='content'
+          value={content}
         />
         <input
           type='hidden'

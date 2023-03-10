@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :ideas, only: [:index, :show, :create, :destroy] do
     resources :comments, only: [:index]
   end
-  resources :comments, only: [:index]
+  resources :comments, only: [:index, :create]
 
   patch '/ideas/:id/likes', to: 'likes#increment_likes'
 
