@@ -11,14 +11,13 @@ function NewIdea({ user, ideas, setIdeas }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const userId = user.id
     fetch('/ideas', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         title,
         content,
-        user_id: userId
+        user_id: user.id
       })
     }).then(r => {
       if(r.ok) {

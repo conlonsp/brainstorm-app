@@ -21,7 +21,7 @@ function IdeaDetails({ idea, loggedUser }) {
       <h1>Idea Details</h1>
       <h2>{title}</h2>
       <p>{content}</p>
-      <h3>By: {user.username}</h3>
+      {/* <h3>By: {user.username}</h3> */}
       {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
