@@ -55,7 +55,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
       </form>
       {errors.map(err => {
         return (
-          <p>{err}</p>
+          <p style={{color: 'red'}}>{err}</p>
         )
       })}
     </div>
