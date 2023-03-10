@@ -1,6 +1,8 @@
 import React from 'react'
 
-function CommentForm() {
+function CommentForm({ comments, setComments }) {
+
+  
 
   return (
     <div>
@@ -12,7 +14,7 @@ function CommentForm() {
         />
         <input
           type='hidden'
-        
+
         />
         <input
           type='hidden'

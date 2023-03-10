@@ -32,7 +32,7 @@ function IdeaDetails({ idea }) {
         : 
         <h3>No Comments Yet!</h3>
       }
-      <CommentForm />
+      <CommentForm comments={comments} setComments={setComments} />
       <button onClick={() => {
         navigate('/ideaboard')
       }}>
