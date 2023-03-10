@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
     render json: comment, status: :created
   end
 
+  private
 
+  def comment_params
+    params.permit(:content, :user_id, :idea_id)
+  end
   
 end
