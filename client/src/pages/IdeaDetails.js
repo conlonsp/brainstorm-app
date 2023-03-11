@@ -6,6 +6,8 @@ import CommentForm from '../components/CommentForm'
 function IdeaDetails({ idea, loggedUser }) {
   const {id, title, content, likes, user} = idea
 
+  console.log(user)
+
   const [comments, setComments] = useState([])
 
   let navigate = useNavigate()
@@ -21,7 +23,7 @@ function IdeaDetails({ idea, loggedUser }) {
       <h1>Idea Details</h1>
       <h2>{title}</h2>
       <p>{content}</p>
-      <h3>By: {user.username}</h3>
+      {user ? <h3>By: {user.username}</h3> : null}
       {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
