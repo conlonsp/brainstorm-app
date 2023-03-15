@@ -6,6 +6,7 @@ import IdeaBoard from '../pages/IdeaBoard'
 import LoginSignup from '../pages/LoginSignup';
 import NewIdea from '../pages/NewIdea'
 import IdeaDetails from '../pages/IdeaDetails';
+import UpdateIdeaForm from './UpdateIdeaForm';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -58,6 +59,12 @@ function App() {
         }/>
         <Route path='/ideadetails' element={
           <IdeaDetails
+            idea={idea}
+            loggedUser={user}
+          />
+        }/>
+        <Route path='/updateidea' element={
+          <UpdateIdeaForm
             idea={idea}
             loggedUser={user}
           />

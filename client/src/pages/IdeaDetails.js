@@ -34,7 +34,7 @@ function IdeaDetails({ idea, loggedUser }) {
         <h2>{likes} likes</h2>
       }
       {loggedUser.id === idea.user_id ?
-        <button>Update</button>
+        <button onClick={() => navigate('/updateidea')}>Update</button>
       :
         null
       }
