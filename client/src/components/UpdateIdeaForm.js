@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function UpdateIdeaForm() {
+
+  let navigate = useNavigate()
 
   return (
     <div>
@@ -15,12 +18,13 @@ function UpdateIdeaForm() {
           type='text'
         />
         <input
-        
+
         />
         <input
         
         />
       </form>
+      <button onClick={() => navigate('/ideaboard')}>Back to Idea Board</button>
     </div>
   )
 }
