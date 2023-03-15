@@ -36,19 +36,25 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       <h1>{title}</h1>
       <p>By: {ideaUser.username}</p>
       <span>
-        {user.id !== idea.user.id ? <button onClick={updateLikes}>❤️</button> : null}
+        {user.id !== idea.user.id ?
+          <button onClick={updateLikes}>❤️</button>
+        : 
+          null
+        }
         &nbsp;
         {likes} likes
       </span>
       <br/>
-      {user.id === idea.user.id ? <button onClick={handleDelete}>Delete Idea</button> : null}
+      {user.id === idea.user.id ?
+        <button onClick={handleDelete}>Delete Idea</button>
+      :
+        null
+      }
       <br/>
       <button onClick={() => {
         grabIdea()
-        navigate('/ideadetails')}}
-      >
-        View More
-      </button>
+        navigate('/ideadetails')
+      }}>View More</button>
     </div>
   )
 }

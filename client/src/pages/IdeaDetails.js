@@ -23,8 +23,21 @@ function IdeaDetails({ idea, loggedUser }) {
       <h1>Idea Details</h1>
       <h2>{title}</h2>
       <p>{content}</p>
-      {user ? <h3>By: {user.username}</h3> : null}
-      {likes < 2 ? <h2>{likes} like</h2> : <h2>{likes} likes</h2>}
+      {user ?
+        <h3>By: {user.username}</h3>
+      :
+        null
+      }
+      {likes < 2 ?
+        <h2>{likes} like</h2>
+      :
+        <h2>{likes} likes</h2>
+      }
+      {loggedUser.id === idea.user_id ?
+        <button>Update</button>
+      :
+        null
+      }
       <h2>Comments:</h2>
       {comments.length > 0 ? comments.map(com => {
         return (
