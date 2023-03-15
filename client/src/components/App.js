@@ -66,7 +66,6 @@ function App() {
         <Route path='/updateidea' element={
           <UpdateIdeaForm
             idea={idea}
-            loggedUser={user}
           />
         }/>
       </Routes>

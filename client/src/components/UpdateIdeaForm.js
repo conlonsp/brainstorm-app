@@ -1,9 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UpdateIdeaForm() {
+function UpdateIdeaForm({ idea }) {
+
+  const {title, content, likes, user_id} = idea
 
   let navigate = useNavigate()
+
+  
 
   return (
     <div>
