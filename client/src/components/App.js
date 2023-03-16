@@ -37,6 +37,7 @@ function App() {
         return idea
       }
     })
+    setIdeas(updatedIdeas)
   }
   
   if(!user) return (
