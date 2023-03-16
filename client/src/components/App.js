@@ -26,6 +26,16 @@ function App() {
     .then(r => r.json())
     .then(idea => setIdea(idea))
   }
+
+  function handleUpdateIdea(updatedIdea) {
+    const updatedIdeas = ideas.map(idea => {
+      if(idea.id === updatedIdea.id) {
+        return updatedIdea
+      } else {
+        return idea
+      }
+    })
+  }
   
   if(!user) return <LoginSignup setUser={setUser} />
 
@@ -66,6 +76,7 @@ function App() {
         <Route path='/updateidea' element={
           <UpdateIdeaForm
             idea={idea}
+            onUpdateIdea={handleUpdateIdea}
           />
         }/>
       </Routes>
