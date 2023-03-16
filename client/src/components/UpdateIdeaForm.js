@@ -12,6 +12,7 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
     user_id: userId
   })
   const [errors, setErrors] = useState([])
+  const [rendForm, setRendForm] = useState(false)
 
   let navigate = useNavigate()
 
@@ -36,7 +37,10 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
       body: JSON.stringify(updated)
     }).then(r => {
       if(r.ok) {
-        r.json().then(idea => onUpdateIdea(idea))
+        r.json().then(idea => {
+          onUpdateIdea(idea)
+          setRendForm(true)
+        })
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -45,40 +49,53 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
 
   return (
     <div>
-      <h1>Update Idea Form</h1>
-      <form>
-        <label htmlFor='title'>Title: </label>
-        <input
-          type='text'
-          name='title'
-          value={updatedIdea.title}
-          onChange={handleChange}
-        />
-        <label htmlFor='content'>Content: </label>
-        <textarea
-          type='text'
-          rows='4'
-          name='content'
-          value={updatedIdea.content}
-          onChange={handleChange}
-        />
-        <input
-          type='hidden'
-          name='likes'
-          value={updatedIdea.likes}
-        />
-        <input
-          type='hidden'
-          name='user_id'
-          value={updatedIdea.user_id}
-        />
-      </form>
-      {errors.map(err => {
-        return (
-          <p key={err}style={{color: 'red'}}>{err}</p>
-        )
-      })}
-      <button onClick={() => navigate('/ideaboard')}>Back to Idea Board</button>
+      {!rendForm ?
+      <div>
+        <h1>Update Idea Form</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='title'>Title: </label>
+          <input
+            type='text'
+            name='title'
+            value={updatedIdea.title}
+            onChange={handleChange}
+          />
+          <label htmlFor='content'>Content: </label>
+          <textarea
+            type='text'
+            rows='4'
+            name='content'
+            value={updatedIdea.content}
+            onChange={handleChange}
+          />
+          <input
+            type='hidden'
+            name='likes'
+            value={updatedIdea.likes}
+          />
+          <input
+            type='hidden'
+            name='user_id'
+            value={updatedIdea.user_id}
+          />
+          <button>Submit Update</button>
+        </form>
+        {errors.map(err => {
+          return (
+            <p key={err}style={{color: 'red'}}>{err}</p>
+          )
+        })}
+      </div>
+      :
+      <div>
+        <h1>Update Submit Successful!</h1>
+        <h3>Head back to the Idea Board</h3>
+      </div>
+      }
+      <button onClick={() => {
+        navigate('/ideaboard')
+        setRendForm(false)
+      }}>Back to Idea Board</button>
     </div>
   )
 }
