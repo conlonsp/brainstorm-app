@@ -41,9 +41,9 @@ function App() {
   }
   
   if(!user) return (
-    <Container>
+    
       <LoginSignup setUser={setUser} />
-    </Container>
+    
   )
 
   return (

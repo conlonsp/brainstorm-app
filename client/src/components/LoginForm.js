@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Button, Typography } from '@mui/material'
+
 
 function Login({ setUser }) {
   const [username, setUsername] = useState('')
@@ -28,31 +30,33 @@ function Login({ setUser }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>Username: </label>
-        <br/>
-        <input
-          type='text'
+        <TextField
+          variant='standard'
+          label='Username'
+          placeholder='Enter Username'
           id='username'
           autoComplete='off'
           value={username}
           onChange={e => setUsername(e.target.value)}
+          fullWidth required
         />
-        <br/>
-        <label htmlFor='password'>Password: </label>
-        <br/>
-        <input
+        <TextField
+          variant='standard'
+          label='Password'
+          placeholder='Enter Password'
           type='password'
           id='password'
           autoComplete='off'
           value={password}
           onChange={e => setPassword(e.target.value)}
+          fullWidth required
         />
         <br/>
-        <button>Login</button>
+        <Button type='submit' align='center' fullWidth required>Log In</Button>
       </form>
       {errors.map(err => {
         return (
-          <p key={err} style={{color: 'red'}}>{err}</p>
+          <Typography key={err} style={{color: 'red'}}>{err}</Typography>
         )
       })}
     </div>

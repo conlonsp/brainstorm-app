@@ -7,8 +7,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 function LoginSignup({ setUser }) {
   const [loginSwitch, setLoginSwitch] = useState(true)
 
-  const paperStyle={padding: 20, height: '70vh', width: 280, margin: '20px auto'}
-  const avatarStyle={backgroundColor: '#3CB371'}
+  const paperStyle={
+    padding: 20,
+    height: '70vh',
+    width: 280,
+    margin: '20px auto'
+  }
+
+  const avatarStyle={
+    backgroundColor: '#3CB371'
+  }
 
   return (
     <div>
@@ -17,12 +25,12 @@ function LoginSignup({ setUser }) {
           <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
               <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
-              <Typography>Sign In</Typography>
+              <Typography>Log In</Typography>
             </Grid>
             <LoginForm setUser={setUser}/>
             <Typography>
               Don't Have an Account?
-              <Button onClick={() => setLoginSwitch(false)}>SignUp</Button>
+              <Button onClick={() => setLoginSwitch(false)}>Sign Up</Button>
             </Typography>
           </Paper>
         </Grid>
@@ -35,8 +43,8 @@ function LoginSignup({ setUser }) {
             </Grid>
             <SignupForm setUser={setUser}/>
             <Typography>
-              Don't Have an Account?
-              <Button onClick={() => setLoginSwitch(true)}>SignUp</Button>
+              Already Have an Account?
+              <Button onClick={() => setLoginSwitch(true)}>Log In</Button>
             </Typography>
           </Paper>
         </Grid>

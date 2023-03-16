@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { TextField, Button, Typography } from '@mui/material'
 
 function Signup({ setUser }) {
   const [username, setUsername] = useState('')
@@ -39,61 +40,67 @@ function Signup({ setUser }) {
 
   return (
     <div>
-      <h1>Signup Today!</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>Username: </label>
-        <br/>
-        <input
-          type='text'
+        <TextField
+          fullWidth required
+          label='Create Username'
+          placeholder='Username'
+          variant='standard'
           id='username'
           value={username}
           autoComplete='off'
           onChange={e => setUsername(e.target.value)}
         />
-        <br/>
-        <label htmlFor='password'>Password: </label>
-        <br/>
-        <input
+        <TextField
+          fullWidth required
+          label='Create Password'
+          placeholder='Password'
+          variant='standard'
           type='password'
           id='password'
           value={password}
           autoComplete='current-password'
           onChange={e => setPassword(e.target.value)}
         />
-        <br/>
-        <label htmlFor='password_confirmation'>Password Confirmation: </label>
-        <br/>
-        <input
+        <TextField
+          fullWidth required
+          label='Confirm Password'
+          placeholder='Re-enter Password'
+          variant='standard'
           type='password'
           id='password_confirmation'
           value={passwordConfirmation}
           autoComplete='current-password'
           onChange={e => setPasswordConfirmation(e.target.value)}
         />
-        <br/>
-        <label htmlFor='avatar_url'>Avatar URL: </label>
-        <br/>
-        <input
+        <TextField
+          fullWidth required
+          label='Avatar URL'
+          placeholder='Enter URL'
+          variant='standard'
           type='text'
           id='avatar_url'
           value={avatarUrl}
           onChange={e => setAvatarUrl(e.target.value)}
         />
-        <br/>
-        <label htmlFor='bio'>Bio: </label>
-        <br/>
-        <textarea
-          rows='4'
+        <TextField
+          fullWidth required
+          label='Tell us about yourself'
+          placeholder='Enter Bio'
+          variant='standard'
+          multiline
+          rows='5'
+          rowsMax='10'
           id='bio'
           value={bio}
           onChange={e => setBio(e.target.value)}
         />
         <br/>
-        <button>Signup</button>
+        <Button type='submit' fullWidth required>Sign Up</Button>
       </form>
       {errors.map(err => {
         return (
-          <p key={err} style={{color: 'red'}}>{err}</p>
+          <Typography key={err} style={{color: 'red'}}>{err}</Typography>
         )
       })}
     </div>
