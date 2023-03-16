@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Container } from '@mui/material';
+
 import Dashboard from '../pages/Dashboard';
 import NavBar from './NavBar';
 import IdeaBoard from '../pages/IdeaBoard'
@@ -37,10 +39,14 @@ function App() {
     })
   }
   
-  if(!user) return <LoginSignup setUser={setUser} />
+  if(!user) return (
+    <Container>
+      <LoginSignup setUser={setUser} />
+    </Container>
+  )
 
   return (
-    <div>
+    <Container>
       <NavBar
         user={user}
         setUser={setUser}
@@ -80,7 +86,7 @@ function App() {
           />
         }/>
       </Routes>
-    </div>
+    </Container>
   )
 }
 
