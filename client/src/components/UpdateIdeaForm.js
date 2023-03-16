@@ -73,6 +73,11 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
           value={updatedIdea.user_id}
         />
       </form>
+      {errors.map(err => {
+        return (
+          <p key={err}style={{color: 'red'}}>{err}</p>
+        )
+      })}
       <button onClick={() => navigate('/ideaboard')}>Back to Idea Board</button>
     </div>
   )
