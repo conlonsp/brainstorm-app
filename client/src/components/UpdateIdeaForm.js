@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UpdateIdeaForm({ idea }) {
+function UpdateIdeaForm({ idea, onUpdateIdea }) {
 
-  const {title, content, likes, user_id: userId} = idea
+  const {id, title, content, likes, user_id: userId} = idea
 
   const [updatedIdea, setUpdatedIdea] = useState({
     title: title,
@@ -23,6 +23,23 @@ function UpdateIdeaForm({ idea }) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const updated = {
+      title: updatedIdea.title,
+      content: updatedIdea.content,
+      likes: updatedIdea.likes,
+      user_id: updatedIdea.user_id
+    }
+    fetch(`/ideas/${id}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(updated)
+    }).then(r => {
+      if(r.ok) {
+        r.json().then(idea => onUpdateIdea(idea))
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
+    })
   }
 
   return (
