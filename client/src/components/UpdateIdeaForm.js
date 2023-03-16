@@ -21,6 +21,10 @@ function UpdateIdeaForm({ idea }) {
     })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+
   return (
     <div>
       <h1>Update Idea Form</h1>
