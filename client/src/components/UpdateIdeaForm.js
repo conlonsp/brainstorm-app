@@ -11,6 +11,7 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
     likes: likes,
     user_id: userId
   })
+  const [errors, setErrors] = useState([])
 
   let navigate = useNavigate()
 
