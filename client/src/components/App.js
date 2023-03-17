@@ -48,6 +48,7 @@ function App() {
 
   return (
     <Container>
+      
       <NavBar
         user={user}
         setUser={setUser}
