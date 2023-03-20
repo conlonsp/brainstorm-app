@@ -3,17 +3,18 @@ import { Routes, Route } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 import Dashboard from '../pages/Dashboard';
-import NavBar from './NavBar';
 import IdeaBoard from '../pages/IdeaBoard'
 import LoginSignup from '../pages/LoginSignup';
 import NewIdea from '../pages/NewIdea'
 import IdeaDetails from '../pages/IdeaDetails';
 import UpdateIdeaForm from './UpdateIdeaForm';
+import NavBar from './NavBar'
 
 function App() {
   const [user, setUser] = useState(null)
   const [ideas, setIdeas] = useState([])
   const [idea, setIdea] = useState({})
+  const pages = ['dashboard', 'idea board', 'new idea']
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -48,19 +49,16 @@ function App() {
 
   return (
     <Container>
-      
-      <NavBar
-        user={user}
-        setUser={setUser}
-      />
+      <br/>
+      <NavBar pages={pages} setUser={setUser}/>
       <Routes>
-        <Route path='/' element={
+        <Route path='/dashboard' element={
           <Dashboard
             user={user}
             setUser={setUser}
           />
         }/>
-        <Route path='/ideaboard' element={
+        <Route path='/idea board' element={
           <IdeaBoard
             user={user}
             ideas={ideas}
@@ -68,7 +66,7 @@ function App() {
             onIdeaGrab={grabIdeaDetails}
           />
         }/>
-        <Route path='/newidea' element={
+        <Route path='/new idea' element={
           <NewIdea
             user={user}
             ideas={ideas}

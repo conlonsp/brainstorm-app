@@ -1,12 +1,18 @@
-import React from 'react'
-import { Typography } from '@mui/material'
+// import React from 'react'
+// import { Typography } from '@mui/material'
+// import NavBar from './NavBar'
 
-function Header() {
-  return (
-    <div>
-      <Typography>BrainStorm</Typography>
-    </div>
-  )
-}
+// function Header({ user, setUser }) {
 
-export default Header
+//   return (
+//     <div>
+//       <Typography variant='h1'>BrainStorm</Typography>
+//       <NavBar
+//         user={user}
+//         setUser={setUser}
+//       />
+//     </div>
+//   )
+// }
+
+// export default Header
