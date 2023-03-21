@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { AppBar, Box, Toolbar, Tabs, Tab, Grid, Typography, Button } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { AppBar, Box, Toolbar, Tabs, Tab, Grid, Typography, Button, Avatar } from '@mui/material'
 import ThunderstormOutlinedIcon from '@mui/icons-material/ThunderstormOutlined';
 
-function NavBar({ pages, setUser }) {
+function NavBar({ pages, setUser, user }) {
 
-  const [value, setValue] = useState()
-  const navigate = useNavigate()
+  const [value, setValue] = useState(0)
 
   function handleLogout() {
     fetch('/logout', { method: 'DELETE'}).then(r => {
@@ -15,6 +14,8 @@ function NavBar({ pages, setUser }) {
       }
     })
   }
+
+  console.log(user)
 
   return (
     <AppBar position="static">
@@ -52,7 +53,9 @@ function NavBar({ pages, setUser }) {
           <Grid xs={2}/>
           <Grid xs={2}>
             <Box display='flex'>
+              
               <Button variant='contained' sx={{marginLeft: 'auto'}} onClick={handleLogout}>Logout</Button>
+              <Avatar sx={{ marginLeft: 2}} src={`${user.avatar_url}`}/>
             </Box>
           </Grid>
         </Grid>  

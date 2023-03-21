@@ -12,7 +12,7 @@ user1 = User.create(
   password: '123456',
   password_confirmation: '123456',
   bio: 'Hi, my name is Sam.',
-  avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
+  avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmstdy-egZ2VufcmlLN1vx0NyvoHQrwZ68Jg&usqp=CAU",
 )
 
 user2 = User.create(
@@ -20,7 +20,7 @@ user2 = User.create(
   password: 'barking',
   password_confirmation: 'barking',
   bio: 'I like playing fetch!',
-  avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
+  avatar_url: "https://cache.lovethispic.com/uploaded_images/blogs/10-Beautiful-Nature-Scenes-And-Landscapes-48771-7.jpeg",
 )
 
 user3 = User.create(
@@ -28,7 +28,7 @@ user3 = User.create(
   password: 'sizzle',
   password_confirmation: 'sizzle',
   bio: 'Drink me.',
-  avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
+  avatar_url: "https://cache.lovethispic.com/uploaded_images/blogs/10-Beautiful-Nature-Scenes-And-Landscapes-48771-6.jpeg",
 )
 
 user4 = User.create(
@@ -36,7 +36,7 @@ user4 = User.create(
   password: 'titetite',
   password_confirmation: 'titetite',
   bio: 'Whatever',
-  avatar_url: 'https://www.google.com/search?q=random+image&oq=random&aqs=chrome.1.69i57j69i59j0i131i433i512j0i433i512l2j0i131i433i512l2j69i61.2225j0j7&sourceid=chrome&ie=UTF-8#imgrc=jsbCYSW7o-fL-M',
+  avatar_url: "https://cache.lovethispic.com/uploaded_images/blogs/10-Beautiful-Nature-Scenes-And-Landscapes-48771-9.jpeg",
 )
 
 puts '...seeding ideas 💡'

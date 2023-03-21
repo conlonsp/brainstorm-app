@@ -50,7 +50,7 @@ function App() {
   return (
     <Container>
       <br/>
-      <NavBar pages={pages} setUser={setUser}/>
+      <NavBar pages={pages} setUser={setUser} user={user}/>
       <Routes>
         <Route path='/dashboard' element={
           <Dashboard
