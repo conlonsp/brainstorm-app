@@ -2,7 +2,7 @@
 // import { Typography } from '@mui/material'
 // import NavBar from './NavBar'
 
-// function Header({ user, setUser }) {
+// function Header({ user,}) {
 
 //   return (
 //     <div>

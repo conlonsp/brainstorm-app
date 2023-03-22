@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
 
 function Login({ setUser }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
+
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -20,6 +23,7 @@ function Login({ setUser }) {
         r.json().then(user =>{
           setUser(user)
           setErrors([])
+          navigate('/dashboard')
         })
       } else {
         r.json().then(err => setErrors(err.errors))

@@ -3,7 +3,7 @@ import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
 import { Grid, Paper, Button, Typography, Avatar } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Logo from '../images/Logo.png'
+// import Logo from '../images/Logo2.svg'
 
 
 function LoginSignup({ setUser }) {
@@ -11,7 +11,7 @@ function LoginSignup({ setUser }) {
 
   const paperStyle={
     padding: 50,
-    height: '50vh',
+    height: '60vh',
     width: 280,
     margin: '20px auto',
     // backgroundImage: `url(${Logo})`,
@@ -27,7 +27,7 @@ function LoginSignup({ setUser }) {
   return (
     <div >
       {loginSwitch ? (
-        <Grid style={{opacity: '0.95'}}>
+        <Grid>
           <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
               <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
@@ -41,7 +41,7 @@ function LoginSignup({ setUser }) {
           </Paper>
         </Grid>
       ) : (
-        <Grid style={{opacity: '0.95'}}>
+        <Grid>
           <Paper elevation={10} style={paperStyle}>
             <Grid align='center'>
               <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Button, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function Signup({ setUser }) {
   const [username, setUsername] = useState('')
@@ -8,6 +9,8 @@ function Signup({ setUser }) {
   const [avatarUrl, setAvatarUrl] = useState('')
   const [bio, setBio] = useState('')
   const [errors, setErrors] = useState([])
+
+  const navigate = useNavigate()
   
   
   function handleSubmit(e) {
@@ -32,6 +35,7 @@ function Signup({ setUser }) {
         setPasswordConfirmation('')
         setAvatarUrl('')
         setBio('')
+        navigate('/dashboard')
       } else {
         r.json().then(err => setErrors(err.errors))
       }

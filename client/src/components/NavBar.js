@@ -15,8 +15,6 @@ function NavBar({ pages, setUser, user }) {
     })
   }
 
-  console.log(user)
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -31,7 +29,7 @@ function NavBar({ pages, setUser, user }) {
             </Tabs>
           </Grid>
           <Grid item xs={3}>
-            <Box xs={2}>
+            <Box>
               <Typography
                 variant="h5"
                 noWrap
@@ -50,8 +48,8 @@ function NavBar({ pages, setUser, user }) {
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={2}/>
-          <Grid xs={2}>
+          <Grid item xs={2}/>
+          <Grid item xs={2}>
             <Box display='flex'>
               
               <Button variant='contained' sx={{marginLeft: 'auto'}} onClick={handleLogout}>Logout</Button>
@@ -102,8 +100,3 @@ function NavBar({ pages, setUser, user }) {
 }
 
 export default NavBar;
-
-{/* <NavLink to='/'>Dashboard</NavLink>
-<NavLink to='/ideaboard'>Idea Board</NavLink>
-<NavLink to='/newidea'>New Idea</NavLink>
-{user ? <Button onClick={handleLogout}>Logout</Button> : null} */}
