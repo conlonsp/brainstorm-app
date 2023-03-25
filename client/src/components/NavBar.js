@@ -23,7 +23,7 @@ function NavBar({ pages, setUser, user }) {
             <Tabs indicatorColor='primary' textColor='inherit' value={value} onChange={(e, val) => setValue(val)} >
               {pages.map((page, index) => {
                 return (
-                  <Tab key={index} label={page} component={Link} to={`/${page}`}/>
+                  <Tab key={index} label={page} component={Link} to={page === 'dashboard' ? '/' : `/${page}`}/>
                 )
               })}
             </Tabs>

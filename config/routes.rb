@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'likes#all_likes'
   
+  get '/latestidea', to: 'ideas#latest_idea'
+  
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

@@ -30,6 +30,10 @@ class IdeasController < ApplicationController
     head :no_content
   end
 
+  def latest_idea
+    render json: Idea.all.last, include: :user, status: :ok
+  end
+
   private
 
   def idea_params

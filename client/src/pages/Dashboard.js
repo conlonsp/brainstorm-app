@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Typography, Paper } from '@mui/material';
+import { Grid, Typography, Paper, Avatar, Box } from '@mui/material';
 
 
-function Dashboard({ user }) {
+function Dashboard({ user, latestIdea }) {
 
-  const [likes, setLikes] = useState('')
+  const [allLikes, setAllLikes] = useState('')
+
+  const {title, content, likes, user: ideaUser} = latestIdea
 
   useEffect(() => {
     fetch(`/users/${user.id}`)
     .then(r => r.json())
-    .then(data => console.log(data))
+    .then(data => setAllLikes(data))
   }, [])
 
-  const numLikes = user.ideas.map(idea => idea.likes)
-
-  const totalLikes = numLikes.reduce((total, currentVal) => total + currentVal)
-
-  console.log(likes)
-
-  console.log(numLikes)
-  console.log(totalLikes)
+  console.log(latestIdea)
 
   return (
     <Grid container>
@@ -28,17 +23,39 @@ function Dashboard({ user }) {
       </Grid>
       <Grid item xs={4}>
         <Typography align='center' variant='h6'>See how you rank!</Typography>
-        <Paper elevation={5}>
+        <Paper elevation={5}  style={{padding: 10}}>
           <Grid align='center'>
             <Typography>Total Ideas</Typography>
             <Typography>{user.ideas.length}</Typography>
           </Grid>
           <Grid align='center'>
             <Typography>Total Likes</Typography>
-            <Typography>{totalLikes}</Typography>
+            <Typography>{allLikes}</Typography>
           </Grid>
         </Paper>
       </Grid>
+      {user ?
+        <Grid item xs={4}>
+          <Typography align='center' variant='h6'>
+            Check out the latest idea!
+          </Typography>
+          <Paper elevation={5} style={{padding: 10}}>
+            <Grid align='center'>
+            <Box>
+                <Typography>
+                  <Avatar src={ideaUser.avatar_url}/>
+                  {ideaUser.username}
+                </Typography>
+              </Box>
+              <Typography variant='h5'>{title}</Typography>
+              <Typography>"{content}"</Typography>
+              <Typography>{likes} likes</Typography>
+            </Grid>
+          </Paper>
+        </Grid>
+      :
+        null
+      }
     </Grid>
   )
 }

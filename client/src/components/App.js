@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [ideas, setIdeas] = useState([])
   const [idea, setIdea] = useState({})
+  const [latestIdea, setLatestIdea] = useState({})
   const pages = ['dashboard', 'idea board', 'new idea']
 
   useEffect(() => {
@@ -23,6 +24,12 @@ function App() {
       }
     })
   }, [])
+
+  useEffect(() => {
+    fetch('/latestidea')
+    .then(r => r.json())
+    .then(data => setLatestIdea(data))
+  }, [ideas])
 
   function grabIdeaDetails(idea) {
     fetch(`/ideas/${idea.id}`)
@@ -52,10 +59,10 @@ function App() {
       <br/>
       <NavBar pages={pages} setUser={setUser} user={user}/>
       <Routes>
-        <Route path='/dashboard' element={
+        <Route path='/' element={
           <Dashboard
             user={user}
-            setUser={setUser}
+            latestIdea={latestIdea}
           />
         }/>
         <Route path='/idea board' element={

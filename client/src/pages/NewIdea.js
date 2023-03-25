@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { TextField, Button } from '@mui/material'
 
 function NewIdea({ user, ideas, setIdeas }) {
 
@@ -25,7 +26,7 @@ function NewIdea({ user, ideas, setIdeas }) {
           setIdeas([...ideas, newIdea])
           setTitle('')
           setContent('')
-          navigate('/ideaboard')
+          navigate('/idea board')
           
         })
       } else {
@@ -38,7 +39,7 @@ function NewIdea({ user, ideas, setIdeas }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title: </label>
+        {/* <label htmlFor='title'>Title: </label>
         <br/>
         <input
           type='text'
@@ -61,7 +62,35 @@ function NewIdea({ user, ideas, setIdeas }) {
           value={user.id}
         />
         <br/>
-        <button>Submit</button>
+        <button>Submit</button> */}
+        <TextField
+          fullWidth required
+          label='Title'
+          placeholder="What's your idea?"
+          variant='standard'
+          type='text'
+          id='title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+        <TextField
+          fullWidth required
+          label='Content'
+          placeholder="What's it all about?"
+          variant='standard'
+          multiline
+          rows='5'
+          rowsMax='10'
+          id='content'
+          value={content}
+          onChange={e => setContent(e.target.value)}
+        />
+        <input
+          type='hidden'
+          id='user_id'
+          value={user.id}
+        />
+        <Button type='submit' fullWidth required>Post Idea</Button>
       </form>
       {errors.map(err => {
         return (
