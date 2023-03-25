@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TextField, Button } from '@mui/material'
+import { TextField, Typography, Button, Grid, Paper } from '@mui/material'
 
 function NewIdea({ user, ideas, setIdeas }) {
 
@@ -34,11 +34,64 @@ function NewIdea({ user, ideas, setIdeas }) {
       }
     })
   }
+
+  const paperStyle={
+    padding: 30,
+    height: '25vh',
+    width: 380,
+    margin: '20px auto',
+  }
   
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <Grid>
+          <Paper elevation={10} style={paperStyle}>
+            <Typography align='center' variant='h5'>Post a New Idea</Typography>
+            <TextField
+              fullWidth required
+              label='Title'
+              placeholder="What's your idea?"
+              variant='standard'
+              type='text'
+              id='title'
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+            <TextField
+              fullWidth required
+              label='Content'
+              placeholder="What's it all about?"
+              variant='standard'
+              multiline
+              rows='5'
+              rowsMax='10'
+              id='content'
+              value={content}
+              onChange={e => setContent(e.target.value)}
+            />
+            <input
+              type='hidden'
+              id='user_id'
+              value={user.id}
+            />
+            <Button type='submit' fullWidth required>Post Idea</Button>
+          </Paper>
+        </Grid>
+      </form>
+      {errors.map(err => {
+        return (
+          <p key={err} style={{color: 'red'}}>{err}</p>
+        )
+      })}
+    </div>
+  )
+}
+
+export default NewIdea
+
+
         {/* <label htmlFor='title'>Title: </label>
         <br/>
         <input
@@ -63,42 +116,3 @@ function NewIdea({ user, ideas, setIdeas }) {
         />
         <br/>
         <button>Submit</button> */}
-        <TextField
-          fullWidth required
-          label='Title'
-          placeholder="What's your idea?"
-          variant='standard'
-          type='text'
-          id='title'
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <TextField
-          fullWidth required
-          label='Content'
-          placeholder="What's it all about?"
-          variant='standard'
-          multiline
-          rows='5'
-          rowsMax='10'
-          id='content'
-          value={content}
-          onChange={e => setContent(e.target.value)}
-        />
-        <input
-          type='hidden'
-          id='user_id'
-          value={user.id}
-        />
-        <Button type='submit' fullWidth required>Post Idea</Button>
-      </form>
-      {errors.map(err => {
-        return (
-          <p key={err} style={{color: 'red'}}>{err}</p>
-        )
-      })}
-    </div>
-  )
-}
-
-export default NewIdea

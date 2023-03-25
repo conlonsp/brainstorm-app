@@ -17,7 +17,6 @@ function LoginSignup({ setUser }) {
     // backgroundImage: `url(${Logo})`,
     // backgroundRepeat: 'no-repeat',
     // backgroundPosition: 'center bottom',
-    
   }
 
   const avatarStyle={
