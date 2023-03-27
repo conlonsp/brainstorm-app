@@ -33,26 +33,17 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
   }
 
   const paperStyle={
-    padding: 30,
-    height: '15vh',
-    width: 380,
+    padding: 20,
+    height: 200,
+    width: 500,
     margin: '20px auto',
   }
 
   
   return (
-    <Paper align='center' style={paperStyle}>
+    <Paper align='center' elevation={10} style={paperStyle}>
       <Typography variant='h4'>{title}</Typography>
       <Typography variant='h8'>By: {ideaUser.username}</Typography>
-      <br/>
-      <span>
-        {user.id !== idea.user.id ?
-          <Button onClick={updateLikes}>❤️</Button>
-        : 
-          null
-        }
-        {likes} likes
-      </span>
       <br/>
       {user.id === idea.user.id ?
         <Button onClick={handleDelete}>Delete Idea</Button>
@@ -66,6 +57,15 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       }}>
         View More
       </Button>
+      <br/>
+      <span>
+        {user.id !== idea.user.id ?
+          <Button variant='text' size='small' onClick={updateLikes}>❤️</Button>
+        : 
+          'You have '
+        }
+        {likes} likes
+      </span>
     </Paper>
   )
 }
