@@ -1,3 +1,4 @@
+import { Grid, Paper, Typography, Button } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Comment from '../components/Comment'
@@ -18,47 +19,54 @@ function IdeaDetails({ idea, loggedUser }) {
     .then(comments => setComments(comments))
   }, [id])
 
+  const paperStyle={
+    marginTop: 20,
+    padding: 10,
+    height: 'auto',
+  }
+
   return (
-    <div>
-      <h1>Idea Details</h1>
-      <h2>{title}</h2>
-      <p>{content}</p>
-      {user ?
-        <h3>By: {user.username}</h3>
-      :
-        null
-      }
-      {likes < 2 ?
-        <h2>{likes} like</h2>
-      :
-        <h2>{likes} likes</h2>
-      }
-      {loggedUser.id === idea.user_id ?
-        <button onClick={() => navigate('/updateidea')}>Update</button>
-      :
-        null
-      }
-      <h2>Comments:</h2>
-      {comments.length > 0 ? comments.map(com => {
-        return (
-          <Comment key={com.id} com={com} />
-        )
-      })
-        : 
-        <h3>No Comments Yet!</h3>
-      }
-      <CommentForm
-        comments={comments}
-        setComments={setComments}
-        idea={idea}
-        loggedUser={loggedUser}
-      />
-      <button onClick={() => {
-        navigate('/ideaboard')
-      }}>
-        Back to Idea Board
-      </button>
-    </div>
+    <Grid>
+      <Paper elevation={10} align='center' style={paperStyle}>
+        <Typography variant='h5' sx={{ fontWeight: 'bold'}}>{title}</Typography>
+        <Typography>{content}</Typography>
+        {user ?
+          <Typography>By: {user.username}</Typography>
+        :
+          null
+        }
+        {likes < 2 ?
+          <Typography>{likes} like</Typography>
+        :
+          <Typography>{likes} likes</Typography>
+        }
+        {loggedUser.id === idea.user_id ?
+          <Button onClick={() => navigate('/updateidea')}>Update</Button>
+        :
+          null
+        }
+        <Typography>Comments:</Typography>
+        {comments.length > 0 ? comments.map(com => {
+          return (
+            <Comment key={com.id} com={com} />
+          )
+        })
+          : 
+          <Typography>No Comments Yet!</Typography>
+        }
+        <CommentForm
+          comments={comments}
+          setComments={setComments}
+          idea={idea}
+          loggedUser={loggedUser}
+        />
+        <Button onClick={() => {
+          navigate('/ideaboard')
+        }}>
+          Back to Idea Board
+        </Button>
+      </Paper>
+    </Grid>
   )
 }
 

@@ -35,7 +35,7 @@ function Signup({ setUser }) {
         setPasswordConfirmation('')
         setAvatarUrl('')
         setBio('')
-        navigate('/dashboard')
+        navigate('/')
       } else {
         r.json().then(err => setErrors(err.errors))
       }

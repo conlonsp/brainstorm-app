@@ -1,3 +1,4 @@
+import { TextField, Button } from '@mui/material'
 import React, { useState } from 'react'
 
 function CommentForm({ comments, setComments, idea, loggedUser }) {
@@ -33,10 +34,9 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='content'>Leave a comment</label>
-        <br/>
-        <textarea
+        <TextField
           type='text'
+          placeholder='Leave a comment'
           id='content'
           value={content}
           onChange={e => setContent(e.target.value)}
@@ -51,7 +51,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
           id='idea_id'
           value={idea.id}
         />
-        <button>Submit</button>
+        <Button>Submit</Button>
       </form>
       {errors.map(err => {
         return (

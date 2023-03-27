@@ -1,3 +1,4 @@
+import { Paper, TextField, Typography, Button, Grid } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -50,21 +51,26 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
   return (
     <div>
       {!rendForm ?
-      <div>
-        <h1>Update Idea Form</h1>
+      <Paper elevation={10} sx={{p: 3}}>
+        <Typography sx={{p: 2, mb: 2}} variant='h4'>Update Idea #{id}</Typography>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='title'>Title: </label>
-          <input
+          <TextField
+            sx={{p: 3}}
+            fullWidth required
             type='text'
             name='title'
+            label='Title'
             value={updatedIdea.title}
             onChange={handleChange}
           />
-          <label htmlFor='content'>Content: </label>
-          <textarea
+          <Grid xs={2}></Grid>
+          <TextField
+            sx={{p: 3}}
+            fullWidth required
             type='text'
             rows='4'
             name='content'
+            label='Content'
             value={updatedIdea.content}
             onChange={handleChange}
           />
@@ -78,24 +84,25 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
             name='user_id'
             value={updatedIdea.user_id}
           />
-          <button>Submit Update</button>
+          <Button>Submit Update</Button>
         </form>
         {errors.map(err => {
           return (
             <p key={err}style={{color: 'red'}}>{err}</p>
           )
         })}
-      </div>
+      </Paper>
       :
       <div>
         <h1>Update Submit Successful!</h1>
         <h3>Head back to the Idea Board</h3>
       </div>
       }
-      <button onClick={() => {
-        navigate('/ideaboard')
+      <br/>
+      <Button variant='contained' sx={{p: 2, ml: 'auto'}} onClick={() => {
+        navigate('/idea board')
         setRendForm(false)
-      }}>Back to Idea Board</button>
+      }}>Back to Idea Board</Button>
     </div>
   )
 }

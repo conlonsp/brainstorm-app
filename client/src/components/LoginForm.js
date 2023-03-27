@@ -23,7 +23,7 @@ function Login({ setUser }) {
         r.json().then(user =>{
           setUser(user)
           setErrors([])
-          navigate('/dashboard')
+          navigate('/')
         })
       } else {
         r.json().then(err => setErrors(err.errors))

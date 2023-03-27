@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Button, Grid, Paper, Typography } from '@mui/material'
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
@@ -30,32 +31,42 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
   function grabIdea() {
     onIdeaGrab(idea)
   }
+
+  const paperStyle={
+    padding: 30,
+    height: '15vh',
+    width: 380,
+    margin: '20px auto',
+  }
+
   
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>By: {ideaUser.username}</p>
+    <Paper align='center' style={paperStyle}>
+      <Typography variant='h4'>{title}</Typography>
+      <Typography variant='h8'>By: {ideaUser.username}</Typography>
+      <br/>
       <span>
         {user.id !== idea.user.id ?
-          <button onClick={updateLikes}>❤️</button>
+          <Button onClick={updateLikes}>❤️</Button>
         : 
           null
         }
-        &nbsp;
         {likes} likes
       </span>
       <br/>
       {user.id === idea.user.id ?
-        <button onClick={handleDelete}>Delete Idea</button>
+        <Button onClick={handleDelete}>Delete Idea</Button>
       :
         null
       }
       <br/>
-      <button onClick={() => {
+      <Button onClick={() => {
         grabIdea()
         navigate('/ideadetails')
-      }}>View More</button>
-    </div>
+      }}>
+        View More
+      </Button>
+    </Paper>
   )
 }
 
