@@ -45,18 +45,20 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       <Typography variant='h4'>{title}</Typography>
       <Typography variant='h8'>By: {ideaUser.username}</Typography>
       <br/>
-      {user.id === idea.user.id ?
-        <Button onClick={handleDelete}>Delete Idea</Button>
-      :
-        null
-      }
-      <br/>
-      <Button onClick={() => {
-        grabIdea()
-        navigate('/ideadetails')
-      }}>
-        View More
-      </Button>
+      <Grid xs={6}>
+        {user.id === idea.user.id ?
+          <Button onClick={handleDelete}>Delete Idea</Button>
+        :
+          null
+        }
+        <br/>
+        <Button onClick={() => {
+          grabIdea()
+          navigate('/ideadetails')
+        }}>
+          View More
+        </Button>
+      </Grid>
       <br/>
       <span>
         {user.id !== idea.user.id ?
