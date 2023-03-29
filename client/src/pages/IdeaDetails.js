@@ -61,7 +61,7 @@ function IdeaDetails({ idea, loggedUser }) {
           loggedUser={loggedUser}
         />
         <Button onClick={() => {
-          navigate('/ideaboard')
+          navigate('/idea board')
         }}>
           Back to Idea Board
         </Button>

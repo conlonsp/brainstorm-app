@@ -21,6 +21,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
         r.json().then(newComment => {
           setComments([...comments, newComment])
           setContent('')
+          setErrors([])
         })
       } else {
         r.json().then(err => {
@@ -29,7 +30,6 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
       }
     })
   }
-
 
   return (
     <div>
@@ -51,7 +51,9 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
           id='idea_id'
           value={idea.id}
         />
-        <Button>Submit</Button>
+        <br/>
+        <Button type='submit'>Submit</Button>
+        <br/>
       </form>
       {errors.map(err => {
         return (

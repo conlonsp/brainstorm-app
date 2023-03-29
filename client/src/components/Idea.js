@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Grid, Paper, Typography } from '@mui/material'
+import { Button, Grid, Paper, Typography, IconButton } from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
@@ -41,33 +42,39 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   
   return (
-    <Paper align='center' elevation={10} style={paperStyle}>
-      <Typography variant='h4'>{title}</Typography>
-      <Typography variant='h8'>By: {ideaUser.username}</Typography>
-      <br/>
-      <Grid xs={6}>
-        {user.id === idea.user.id ?
-          <Button onClick={handleDelete}>Delete Idea</Button>
-        :
-          null
-        }
+    <Paper elevation={10} style={paperStyle}>
+      <Grid container direction='column'>
+        <Grid item display='flex' justifyContent='flex-start'>
+          <Typography variant='h4'>{title}</Typography>
+        </Grid>
+        <Typography variant='h8'>By: {ideaUser.username}</Typography>
         <br/>
-        <Button onClick={() => {
-          grabIdea()
-          navigate('/ideadetails')
-        }}>
-          View More
-        </Button>
+        <Grid item>
+          You have {likes} likes
+          {user.id !== idea.user.id ?
+            <IconButton size='small' variant='contained' onClick={updateLikes}>❤️</IconButton>
+          : 
+            <IconButton disabled size='small' onClick={updateLikes}>❤️</IconButton>
+          }
+        </Grid>
       </Grid>
-      <br/>
-      <span>
-        {user.id !== idea.user.id ?
-          <Button variant='text' size='small' onClick={updateLikes}>❤️</Button>
-        : 
-          'You have '
-        }
-        {likes} likes
-      </span>
+      <Grid container direction='row' paddingTop='50px'>
+        <Grid item sx={{ display: 'flex', mr: 'auto', justifyContent: 'flex-start'}}>
+          <Button variant='contained' onClick={() => {
+            grabIdea()
+            navigate('/ideadetails')
+          }}>
+            View More
+          </Button>
+        </Grid>
+        <Grid item sx={{ display: 'flex', justifyContent: 'flex-end'}}>
+          {user.id === idea.user.id ?
+            <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
+          :
+            <Button disabled onClick={handleDelete}>Delete Idea</Button>
+          }
+        </Grid>
+      </Grid>
     </Paper>
   )
 }
