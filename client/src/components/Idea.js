@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Paper, Typography, IconButton } from '@mui/material'
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
@@ -50,11 +49,11 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
         <Typography variant='h8'>By: {ideaUser.username}</Typography>
         <br/>
         <Grid item>
-          You have {likes} likes
+          {likes} liked this idea!
           {user.id !== idea.user.id ?
             <IconButton size='small' variant='contained' onClick={updateLikes}>❤️</IconButton>
           : 
-            <IconButton disabled size='small' onClick={updateLikes}>❤️</IconButton>
+            <IconButton disabled size='small' onClick={updateLikes}>♥️</IconButton>
           }
         </Grid>
       </Grid>

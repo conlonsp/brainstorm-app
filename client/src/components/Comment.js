@@ -1,12 +1,15 @@
+import { Grid, Typography } from '@mui/material'
 import React from 'react'
 
 function Comment({ com }) {
 
   return (
-    <div>
-      <h4>{com.user.username} says...</h4>
-      <p>{com.content}</p>
-    </div>
+    <Grid sx={{ padding: '10px'}}>
+      <Typography variant='h6' fontWeight='bold'>
+        {com.user.username} says...
+      </Typography>
+      <Typography>"{com.content}"</Typography>
+    </Grid>
   )
 }
 

@@ -33,14 +33,17 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
 
   return (
     <div>
+      <br/>
       <form onSubmit={handleSubmit}>
         <TextField
+          sx={{width: '75%'}}
           type='text'
           placeholder='Leave a comment'
           id='content'
           value={content}
           onChange={e => setContent(e.target.value)}
         />
+        <br/>
         <input
           type='hidden'
           id='user_id'
@@ -52,8 +55,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
           value={idea.id}
         />
         <br/>
-        <Button type='submit'>Submit</Button>
-        <br/>
+        <Button variant='contained' type='submit'>Submit</Button>
       </form>
       {errors.map(err => {
         return (
