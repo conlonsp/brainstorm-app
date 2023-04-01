@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Typography, Paper, Avatar, Box } from '@mui/material';
+import { Grid, Typography, Paper, Avatar, Box, TextField, Button } from '@mui/material';
 
 
 function Dashboard({ user, latestIdea }) {
@@ -17,45 +17,49 @@ function Dashboard({ user, latestIdea }) {
   console.log(latestIdea)
 
   return (
-    <Grid container>
-      <Grid item xs={4} marginTop={2}>
-        <Typography variant='h4'>Welcome back, {user.username}!</Typography>
-      </Grid>
-      <Grid item xs={4}>
-        <Typography align='center' variant='h6'>See how you rank!</Typography>
-        <Paper elevation={5}  style={{padding: 10}}>
-          <Grid align='center'>
-            <Typography>Total Ideas</Typography>
-            <Typography>{user.ideas.length}</Typography>
-          </Grid>
-          <Grid align='center'>
-            <Typography>Total Likes</Typography>
-            <Typography>{allLikes}</Typography>
-          </Grid>
-        </Paper>
-      </Grid>
-      {user ?
-        <Grid item xs={4}>
-          <Typography align='center' variant='h6'>
-            Check out the latest idea!
-          </Typography>
-          <Paper elevation={5} style={{padding: 10}}>
+    <Grid>
+      <Paper elevation={10} sx={{height: '75vh', mt: 3, p: 3}}>
+        <Typography align='center' variant='h4'>
+          Welcome back, {user.username}!
+        </Typography>
+        <br/>
+        <Grid item sx={{width: '50%'}}>
+          <Typography align='center' variant='h6'>See how you rank!</Typography>
+          <Paper align='center' elevation={5}  style={{padding: 10}}>
             <Grid align='center'>
-            <Box>
-                <Typography>
-                  <Avatar src={ideaUser.avatar_url}/>
-                  {ideaUser.username}
-                </Typography>
-              </Box>
-              <Typography variant='h5'>{title}</Typography>
-              <Typography>"{content}"</Typography>
-              <Typography>{likes} likes</Typography>
+              <Typography>Total Ideas</Typography>
+              <Typography>{user.ideas.length}</Typography>
+            </Grid>
+            <Grid align='center'>
+              <Typography>Total Likes</Typography>
+              <Typography>{allLikes}</Typography>
             </Grid>
           </Paper>
         </Grid>
-      :
-        null
-      }
+        <br/>
+        {user ?
+          <Grid item>
+            <Typography align='center' variant='h6'>
+              Check out the latest idea!
+            </Typography>
+            <Paper elevation={5} style={{padding: 10}}>
+              <Grid align='center'>
+                <Box>
+                  <Typography>
+                    <Avatar src={ideaUser.avatar_url}/>
+                    {ideaUser.username}
+                  </Typography>
+                </Box>
+                <Typography variant='h5'>{title}</Typography>
+                <Typography>"{content}"</Typography>
+                <Typography>{likes} likes</Typography>
+              </Grid>
+            </Paper>
+          </Grid>
+        :
+          null
+        }
+      </Paper>
     </Grid>
   )
 }

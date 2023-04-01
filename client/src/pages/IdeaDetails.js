@@ -26,7 +26,7 @@ function IdeaDetails({ idea, loggedUser }) {
   }
 
   return (
-    <Grid align='center' sx={{ height: '400px' }}>
+    <Grid align='center'  sx={{ height: '400px' }}>
       <Paper elevation={10} align='center' style={paperStyle}>
         <Grid container direction='row' paddingTop='10px'>
           <Grid item sx={{ display: 'flex', mr: 'auto', justifyContent: 'flex-start'}}>
