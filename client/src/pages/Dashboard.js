@@ -23,9 +23,9 @@ function Dashboard({ user, latestIdea }) {
           Welcome back, {user.username}!
         </Typography>
         <br/>
-        <Grid item sx={{width: '50%'}}>
+        <Grid item>
           <Typography align='center' variant='h6'>See how you rank!</Typography>
-          <Paper align='center' elevation={5}  style={{padding: 10}}>
+          <Paper elevation={5}  style={{padding: 10}}>
             <Grid align='center'>
               <Typography>Total Ideas</Typography>
               <Typography>{user.ideas.length}</Typography>

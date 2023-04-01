@@ -76,7 +76,8 @@ function NewIdea({ user, ideas, setIdeas }) {
               id='user_id'
               value={user.id}
             />
-            <Button type='submit' fullWidth required>Post Idea</Button>
+            
+            <Button sx={{mt: 1}} variant='contained' type='submit' fullWidth required>Post Idea</Button>
           </Paper>
         </Grid>
       </form>
