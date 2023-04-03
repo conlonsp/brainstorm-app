@@ -408,5 +408,6 @@ Updates planned for BrainStorm include:
 - Updated Dashboard with more user stats and intuitive design.
 - Ability to update user profile pic and bio from the Dashboard.
 - Update the Idea Board to allow only 10 ideas to show at once, with buttons to navigate to the next 10 or back 10.
+- Be able to view other users pages, stats, and befriend them!
 
 I hope you enjoy using BrainStorm, make new connections, and develop many amazing ideas!
