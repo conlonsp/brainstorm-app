@@ -7,8 +7,6 @@ import CommentForm from '../components/CommentForm'
 function IdeaDetails({ idea, loggedUser }) {
   const {id, title, content, likes, user} = idea
 
-  console.log(user)
-
   const [comments, setComments] = useState([])
 
   let navigate = useNavigate()

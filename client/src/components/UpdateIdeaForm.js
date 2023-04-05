@@ -84,7 +84,7 @@ function UpdateIdeaForm({ idea, onUpdateIdea }) {
             name='user_id'
             value={updatedIdea.user_id}
           />
-          <Button>Submit Update</Button>
+          <Button type='submit'>Submit Update</Button>
         </form>
         {errors.map(err => {
           return (
