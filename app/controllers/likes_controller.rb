@@ -20,7 +20,3 @@ class LikesController < ApplicationController
   end
 
 end
-
-# likes = user.ideas.map do |idea|
-#   idea.likes
-# end

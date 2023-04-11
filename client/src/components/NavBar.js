@@ -59,43 +59,6 @@ function NavBar({ pages, setUser, user }) {
         </Grid>  
       </Toolbar>
     </AppBar>
-    // <AppBar>
-    //   <Toolbar disableGutters>
-    //     <Grid container direction='row'>
-    //       <Grid item xs={4} md={12}>
-    //         <ThunderstormOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
-    //         <Typography
-    //           variant="h6"
-    //           noWrap
-    //           component="a"
-    //           href="/"
-    //           sx={{
-    //             mr: 2,
-    //             display: { xs: 'none', md: 'flex' },
-    //             fontFamily: 'monospace',
-    //             fontWeight: 700,
-    //             letterSpacing: '.3rem',
-    //             color: 'inherit',
-    //             textDecoration: 'none',
-    //           }}
-    //         >
-    //           BRAINSTORM
-    //         </Typography>
-    //       </Grid>
-    //       <Grid item xs={5}>
-    //         <Tabs
-    //           indicatorColor='secondary'
-    //           textColor='inherit'
-    //         >
-    //           <Tab label='Dashboard' />
-    //           <Tab label='Idea Board'/>
-    //           <Tab label='New Idea' />
-    //         </Tabs>
-    //       </Grid>
-    //     </Grid>
-    //     <img src={Logo} height={25} width={25}/>
-    //   </Toolbar>
-    // </AppBar>
   )
 }
 

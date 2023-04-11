@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-  # before_action :authorize
+  before_action :authorize, only: [:update, :destroy]
 
   def index
     render json: Idea.all, status: :ok
@@ -41,7 +41,8 @@ class IdeasController < ApplicationController
   end
 
   def authorize
-    render json: { errors: ["Not Authorized to View Content."] }, status: :unauthorized unless session.include? :user_id
+    idea = Idea.find(params[:id])
+    return render json: { errors: ["Not Authorized."] }, status: :unauthorized unless session[:user_id] == idea.user_id
   end
 
   def render_unprocessable_entity(e)

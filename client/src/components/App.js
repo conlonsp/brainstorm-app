@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from '@mui/material';
-import '/Users/samconlon/Development/code/phase-4/brainstorm-app/client/src/App.css'
 
 import Dashboard from '../pages/Dashboard';
 import IdeaBoard from '../pages/IdeaBoard'
@@ -50,9 +49,7 @@ function App() {
   }
   
   if(!user) return (
-    
-      <LoginSignup setUser={setUser} />
-    
+    <LoginSignup setUser={setUser} />
   )
 
   return (

@@ -67,11 +67,12 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
           </Button>
         </Grid>
         <Grid item sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          {user.id === idea.user.id ?
+          <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
+          {/* {user.id === idea.user.id ?
             <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
           :
             <Button disabled onClick={handleDelete}>Delete Idea</Button>
-          }
+          } */}
         </Grid>
       </Grid>
     </Paper>

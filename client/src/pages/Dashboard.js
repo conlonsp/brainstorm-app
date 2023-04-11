@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Typography, Paper, Avatar, Box, TextField, Button } from '@mui/material';
+import { Grid, Typography, Paper, Avatar, Box } from '@mui/material';
 
 
 function Dashboard({ user, latestIdea }) {
