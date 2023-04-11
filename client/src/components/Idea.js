@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Paper, Typography, IconButton } from '@mui/material'
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   const { id, title, likes, user: ideaUser} = idea
+  const [errors, setErrors] = useState([])
+
 
   let navigate = useNavigate()
 
@@ -24,6 +26,8 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
     }).then(r => {
       if(r.ok) {
         onIdeaDelete(id)
+      } else {
+        r.json().then(err => alert(err.error))
       }
     })
   }

@@ -42,7 +42,7 @@ class IdeasController < ApplicationController
 
   def authorize
     idea = Idea.find(params[:id])
-    return render json: { errors: ["Not Authorized."] }, status: :unauthorized unless session[:user_id] == idea.user_id
+    return render json: { error: "Unauthorized. User cannot tamper with other user's posts." }, status: :unauthorized unless session[:user_id] == idea.user_id
   end
 
   def render_unprocessable_entity(e)
