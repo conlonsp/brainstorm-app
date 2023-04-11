@@ -27,8 +27,12 @@ function Dashboard({ user, latestIdea }) {
           <Typography align='center' variant='h6'>See how you rank!</Typography>
           <Paper elevation={5}  style={{padding: 10}}>
             <Grid align='center'>
-              <Typography>Total Ideas</Typography>
+              <Typography>Idea's Posted</Typography>
               <Typography>{user.idea_count}</Typography>
+            </Grid>
+            <Grid align='center'>
+              <Typography>Comment's Made</Typography>
+              <Typography>{user.comment_count}</Typography>
             </Grid>
             <Grid align='center'>
               <Typography>Total Likes</Typography>
