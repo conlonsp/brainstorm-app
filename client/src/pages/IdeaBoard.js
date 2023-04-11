@@ -17,9 +17,9 @@ function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab }) {
     })
   }, [setIdeas])
 
-  function handleLikes(updatedLikes) {
+  function handleLikes(updatedLikesIdea) {
     const updatedLikesArr = ideas.map(idea => {
-      return idea.id === updatedLikes.id ? updatedLikes : idea
+      return idea.id === updatedLikesIdea.id ? updatedLikesIdea : idea
     })
     setIdeas(updatedLikesArr)
   }

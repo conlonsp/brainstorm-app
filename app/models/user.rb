@@ -4,10 +4,7 @@ class User < ApplicationRecord
   has_many :ideas
   has_many :comments, through: :ideas
 
-  validates :username, presence: true
-  validates :password, presence: true
-  validates :avatar_url, presence: true
-  validates :bio, presence: true
+  validates :username, :password, :avatar_url, :bio, presence: true
 
   validates :username, uniqueness: true
 

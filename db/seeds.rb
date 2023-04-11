@@ -32,7 +32,7 @@ user3 = User.create(
 )
 
 user4 = User.create(
-  username: 'coolkid96',
+  username: 'tuffguy29',
   password: 'titetite',
   password_confirmation: 'titetite',
   bio: 'Whatever',

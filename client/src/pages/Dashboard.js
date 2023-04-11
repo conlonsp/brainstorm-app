@@ -28,7 +28,7 @@ function Dashboard({ user, latestIdea }) {
           <Paper elevation={5}  style={{padding: 10}}>
             <Grid align='center'>
               <Typography>Total Ideas</Typography>
-              <Typography>{user.ideas.length}</Typography>
+              <Typography>{user.idea_count}</Typography>
             </Grid>
             <Grid align='center'>
               <Typography>Total Likes</Typography>
