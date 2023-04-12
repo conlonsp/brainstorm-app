@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Paper, Typography, IconButton } from '@mui/material'
 
 function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   const { id, title, likes, user: ideaUser} = idea
+  
+  const [isDisabled, setIsDisabled] = useState(false)
 
   let navigate = useNavigate()
 
@@ -25,7 +27,10 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       if(r.ok) {
         onIdeaDelete(id)
       } else {
-        r.json().then(err => alert(err.error))
+        r.json().then(err => {
+          alert(err.error)
+          setIsDisabled(true)
+        })
       }
     })
   }
@@ -69,7 +74,7 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
           </Button>
         </Grid>
         <Grid item sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
+          <Button variant='contained' disabled={isDisabled} color='error' onClick={handleDelete}>Delete Idea</Button>
           {/* {user.id === idea.user.id ?
             <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
           :
