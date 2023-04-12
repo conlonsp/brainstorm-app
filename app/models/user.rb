@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :ideas
-  has_many :comments, through: :ideas
+  has_many :comments
+  has_many :ideas, through: :comments
+  has_many :created_ideas, class_name: "Idea"
 
   validates :username, :password, :avatar_url, :bio, presence: true
 
