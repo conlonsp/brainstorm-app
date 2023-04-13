@@ -6,7 +6,8 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   const { id, title, likes, user: ideaUser} = idea
   
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [isDeleteDisabled, setIsDeleteDisabled] = useState(false)
+  const [isLikeDisabled, setIsLikeDisabled] = useState(false)
 
   let navigate = useNavigate()
 
@@ -16,8 +17,17 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(updateLikes)
-    }).then(r => r.json())
-    .then(updatedLikes => onUpdateLikes(updatedLikes))
+    }).then(r => {
+      if (r.ok) {
+        r.json().then(updatedLikes => onUpdateLikes(updatedLikes))
+      } else {
+        r.json().then(err => {
+          alert(err.error)
+          setIsLikeDisabled(true)
+        })
+      }
+    })
+      
   }
 
   function handleDelete() {
@@ -29,7 +39,7 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
       } else {
         r.json().then(err => {
           alert(err.error)
-          setIsDisabled(true)
+          setIsDeleteDisabled(true)
         })
       }
     })
@@ -57,11 +67,7 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
         <br/>
         <Grid item>
           {likes} liked this idea!
-          {user.id !== idea.user.id ?
-            <IconButton size='small' variant='contained' onClick={updateLikes}>❤️</IconButton>
-          : 
-            <IconButton disabled size='small' onClick={updateLikes}>♥️</IconButton>
-          }
+          <IconButton size='small' variant='contained' disabled={isLikeDisabled} onClick={updateLikes}>❤️</IconButton>
         </Grid>
       </Grid>
       <Grid container direction='row' paddingTop='50px'>
@@ -74,12 +80,7 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
           </Button>
         </Grid>
         <Grid item sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <Button variant='contained' disabled={isDisabled} color='error' onClick={handleDelete}>Delete Idea</Button>
-          {/* {user.id === idea.user.id ?
-            <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
-          :
-            <Button disabled onClick={handleDelete}>Delete Idea</Button>
-          } */}
+          <Button variant='contained' disabled={isDeleteDisabled} color='error' onClick={handleDelete}>Delete Idea</Button>
         </Grid>
       </Grid>
     </Paper>
@@ -87,3 +88,18 @@ function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 }
 
 export default Idea
+
+// Possible Reimplementation
+
+  {/* {user.id !== idea.user.id ?
+    <IconButton size='small' variant='contained' onClick={updateLikes}>❤️</IconButton>
+  : 
+    <IconButton disabled size='small' onClick={updateLikes}>♥️</IconButton>
+  } */}
+
+  {/* {user.id === idea.user.id ?
+    <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
+  :
+    <Button disabled onClick={handleDelete}>Delete Idea</Button>
+  } */}
+
