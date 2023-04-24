@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Paper, Typography, IconButton } from '@mui/material'
 
-function Idea({ user, idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
+function Idea({ idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 
   const { id, title, likes, user: ideaUser} = idea
   

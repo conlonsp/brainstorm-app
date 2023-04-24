@@ -49,11 +49,7 @@ function IdeaDetails({ idea, loggedUser }) {
         </Grid>
         <Grid container flexDirection='row'>
           <Grid item sx={{display: 'flex', justifyContent: 'flex-start'}}>
-            {likes < 2 ?
-              <Typography>{likes} like</Typography>
-            :
-              <Typography>{likes} likes</Typography>
-            }
+          <Typography>{likes} people liked this!</Typography>
           </Grid>
         </Grid>
         <Typography>"{content}"</Typography>
