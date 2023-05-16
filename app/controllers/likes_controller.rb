@@ -4,12 +4,8 @@ class LikesController < ApplicationController
 
   def increment_likes
     idea = Idea.find_by(id: params[:id])
-    # if idea
-      idea.update(likes: idea.likes + 1)
-      render json: idea, status: :accepted
-    # else
-    #   render json: { errors: ['Idea not found.'] }, status: :not_found
-    # end
+    idea.update(likes: idea.likes + 1)
+    render json: idea, status: :accepted
   end
 
   def all_likes
@@ -25,7 +21,7 @@ class LikesController < ApplicationController
 
   def authorize
     idea = Idea.find(params[:id])
-    return render json: { error: "Unauthorized. User cannot like their own posts." }, status: :unauthorized unless session[:user_id] == idea.user_id
+    return render json: { error: "Unauthorized. User cannot like their own posts." }, status: :unauthorized unless session[:user_id] != idea.user_id
   end
 
 end

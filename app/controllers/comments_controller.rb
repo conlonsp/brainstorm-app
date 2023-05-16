@@ -17,6 +17,27 @@ class CommentsController < ApplicationController
     render json: comment, status: :created
   end
 
+  def update
+    user = User.find(session[:user_id])
+    comment = Comment.find(params[:id])
+    comment.update!(comment_params)
+    render json: comment, status: :accepted
+  end
+
+  # if comment.user_id == user.id
+  #   comment.update!(comment_params)
+  #   render json: comment, status: :accepted
+  # else
+  #   render json: { errors: 'Unauthorized to complete action.' }, status: :unauthorized
+  # end
+
+  def destroy
+    user = User.find(session[:user_id])
+    comment = user.comments.find(params[:id])
+    comment.destroy
+    head :no_content
+  end
+
   private
 
   def comment_params

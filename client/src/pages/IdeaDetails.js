@@ -1,13 +1,11 @@
 import { Grid, Paper, Typography, Button, List, Divider } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 
-function IdeaDetails({ idea, loggedUser }) {
+function IdeaDetails({ idea, loggedUser, setComments, comments }) {
   const {id, title, content, likes, user} = idea
-
-  const [comments, setComments] = useState([])
 
   let navigate = useNavigate()
   
@@ -16,6 +14,17 @@ function IdeaDetails({ idea, loggedUser }) {
     .then(r => r.json())
     .then(comments => setComments(comments))
   }, [id])
+
+  function handleUpdateComs(comment) {
+    const coms = comments.map(com => {
+      if(com.id === comment.id) {
+        return comment
+      } else {
+        return com
+      }
+    })
+    setComments(coms)
+  }
 
   const paperStyle={
     marginTop: 20,
@@ -62,7 +71,7 @@ function IdeaDetails({ idea, loggedUser }) {
             return (
               <Grid>
                 <Divider/>
-                <Comment key={com.id} com={com} />
+                <Comment key={com.id} com={com} onUpdateComs={handleUpdateComs}/>
                 <Divider/>
               </Grid>
             )

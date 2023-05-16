@@ -14,8 +14,11 @@ function App() {
   const [user, setUser] = useState(null)
   const [ideas, setIdeas] = useState([])
   const [idea, setIdea] = useState({})
-  const [latestIdea, setLatestIdea] = useState({})
   const pages = ['dashboard', 'idea board', 'new idea']
+  const [comments, setComments] = useState([])
+  const [errors, setErrors] = useState([])
+
+  const latestIdea = ideas[ideas.length - 1]
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -26,10 +29,15 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch('/latestidea')
-    .then(r => r.json())
-    .then(data => setLatestIdea(data))
-  }, [ideas])
+    fetch('/ideas')
+    .then(r => {
+      if(r.ok) {
+        r.json().then(data => setIdeas(data))
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
+    })
+  }, [setIdeas])
 
   function grabIdeaDetails(idea) {
     fetch(`/ideas/${idea.id}`)
@@ -69,6 +77,7 @@ function App() {
             ideas={ideas}
             setIdeas={setIdeas}
             onIdeaGrab={grabIdeaDetails}
+            errors={errors}
           />
         }/>
         <Route path='/new idea' element={
@@ -82,6 +91,8 @@ function App() {
           <IdeaDetails
             idea={idea}
             loggedUser={user}
+            comments={comments}
+            setComments={setComments}
           />
         }/>
         <Route path='/updateidea' element={

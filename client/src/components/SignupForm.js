@@ -29,13 +29,16 @@ function Signup({ setUser }) {
       }),
     }).then(r => {
       if(r.ok) {
-        r.json().then(user => setUser(user))
-        setUsername('')
-        setPassword('')
-        setPasswordConfirmation('')
-        setAvatarUrl('')
-        setBio('')
-        navigate('/')
+        r.json().then(user => {
+          setUser(user)
+          setUsername('')
+          setPassword('')
+          setPasswordConfirmation('')
+          setAvatarUrl('')
+          setBio('')
+          navigate('/')
+          setErrors([])
+        })
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -94,7 +97,7 @@ function Signup({ setUser }) {
           variant='standard'
           multiline
           rows='5'
-          rowsMax='10'
+          rowsmax='10'
           id='bio'
           value={bio}
           onChange={e => setBio(e.target.value)}

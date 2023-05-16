@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
   end
   
-  resources :comments, only: [:index, :create]
+  resources :comments, only: [:index, :create, :update, :destroy]
 
   patch '/ideas/:id/likes', to: 'likes#increment_likes'
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'likes#all_likes'
   
-  get '/latestidea', to: 'ideas#latest_idea'
+  # get '/latestidea', to: 'ideas#latest_idea'
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

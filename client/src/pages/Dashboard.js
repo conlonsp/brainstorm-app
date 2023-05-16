@@ -5,16 +5,14 @@ import { Grid, Typography, Paper, Avatar, Box } from '@mui/material';
 function Dashboard({ user, latestIdea }) {
 
   const [allLikes, setAllLikes] = useState('')
-
+  
   const {title, content, likes, user: ideaUser} = latestIdea
-
+  
   useEffect(() => {
     fetch(`/users/${user.id}`)
     .then(r => r.json())
     .then(data => setAllLikes(data))
   }, [])
-
-  console.log(latestIdea)
 
   return (
     <Grid>
@@ -40,12 +38,16 @@ function Dashboard({ user, latestIdea }) {
             </Grid>
             <Grid align='center'>
               <Typography>Your Biggest Collaborator:</Typography>
-              <Typography>{user.biggest_collab}</Typography>
+              {user.biggest_collab ? 
+                <Typography>{user.biggest_collab}</Typography>
+              :
+                <Typography color={'red'}>Start collaborating to view data!</Typography>
+              }
             </Grid>
           </Paper>
         </Grid>
         <br/>
-        {user ?
+        {latestIdea ?
           <Grid item>
             <Typography align='center' variant='h6'>
               Check out the latest idea!
@@ -69,6 +71,7 @@ function Dashboard({ user, latestIdea }) {
         }
       </Paper>
     </Grid>
+    
   )
 }
 

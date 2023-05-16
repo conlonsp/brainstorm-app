@@ -14,31 +14,34 @@ class IdeasController < ApplicationController
   end
 
   def create
-    idea = Idea.create!(idea_params)
+    idea = Idea.create!(
+      title: params[:title],
+      content: params[:content],
+      likes: 0,
+      user_id: session[:user_id]
+    )
     render json: idea, status: :created
   end
 
   def update
     idea = Idea.find(params[:id])
-    idea.update!(idea_params)
+    idea.update!(
+      title: params[:title],
+      content: params[:content],
+      likes: 0,
+      user_id: session[:user_id]
+    )
     render json: idea, status: :accepted
   end
 
   def destroy
-    idea = Idea.find(params[:id])
+    user = User.find(session[:user_id])
+    idea = user.created_ideas.find_by(id: params[:id])
     idea.destroy
     head :no_content
   end
-
-  def latest_idea
-    render json: Idea.all.last, include: :user, status: :ok
-  end
-
+  
   private
-
-  def idea_params
-    params.permit(:title, :content, :likes, :user_id)
-  end
 
   def authorize
     idea = Idea.find(params[:id])

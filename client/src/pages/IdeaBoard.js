@@ -2,20 +2,7 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Idea from '../components/Idea';
 
-function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab }) {
-  
-  const [errors, setErrors] = useState([])
-
-  useEffect(() => {
-    fetch('/ideas')
-    .then(r => {
-      if(r.ok) {
-        r.json().then(data => setIdeas(data))
-      } else {
-        r.json().then(err => setErrors(err.errors))
-      }
-    })
-  }, [setIdeas])
+function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab, errors }) {
 
   function handleLikes(updatedLikesIdea) {
     const updatedLikesArr = ideas.map(idea => {
