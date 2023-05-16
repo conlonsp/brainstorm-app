@@ -19,7 +19,6 @@ function Comment({ com, onUpdateComs }) {
       [e.target.name]: e.target.value
     })
   }
-  
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -37,6 +36,10 @@ function Comment({ com, onUpdateComs }) {
         r.json().then(comment => {
           onUpdateComs(comment)
           setInput(false)
+        })
+      } else {
+        r.json().then(err => {
+          alert(err.errors)
         })
       }
     })

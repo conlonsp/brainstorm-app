@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
+  before_action :authorize, only: [:update, :destroy]
+
   def index
     if params[:idea_id]
       idea = Idea.find(params[:idea_id])
@@ -39,6 +41,11 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def authorize
+    comment = Comment.find(params[:id])
+    render json: { errors: "Unauthorized to complete action." }, status: :unauthorized unless comment.user_id === session[:user_id]
+  end
 
   def comment_params
     params.permit(:content, :user_id, :idea_id)
