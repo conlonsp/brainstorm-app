@@ -1,7 +1,7 @@
 import { Grid, Typography, Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-function Comment({ com, onUpdateComs }) {
+function Comment({ com, onUpdateComs, onDeleteCom }) {
 
   const {id, content, user_id, idea_id} = com
 
@@ -45,6 +45,20 @@ function Comment({ com, onUpdateComs }) {
     })
   }
 
+  function handleDelete() {
+    fetch(`/comments/${id}`, {
+      method: 'DELETE'
+    }).then(r => {
+      if(r.ok) {
+        onDeleteCom(id)
+      } else {
+        r.json().then(err => {
+          alert(err.errors)
+        })
+      }
+    })
+  }
+
   return (
     <div>
       {!input ?
@@ -54,6 +68,7 @@ function Comment({ com, onUpdateComs }) {
           </Typography>
           <Typography>"{com.content}"</Typography>
           <Button onClick={() => setInput(true)}>Update</Button>
+          <Button color='error' onClick={handleDelete}>Delete</Button>
         </Grid>
       :
         <Grid sx={{ padding: '10px'}}>

@@ -26,6 +26,11 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
     setComments(coms)
   }
 
+  function handleDeleteCom(id) {
+    const updatedComs = comments.filter(com => com.id !== id)
+    setComments(updatedComs)
+  }
+
   const paperStyle={
     marginTop: 20,
     padding: 10,
@@ -71,7 +76,12 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
             return (
               <Grid>
                 <Divider/>
-                <Comment key={com.id} com={com} onUpdateComs={handleUpdateComs}/>
+                <Comment
+                  key={com.id}
+                  com={com}
+                  onUpdateComs={handleUpdateComs}
+                  onDeleteCom={handleDeleteCom}
+                />
                 <Divider/>
               </Grid>
             )
