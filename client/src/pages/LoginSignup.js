@@ -6,7 +6,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 // import Logo from '../images/Logo2.svg'
 
 
-function LoginSignup({ setUser }) {
+function LoginSignup({ setUser, setUserIdeas }) {
   const [loginSwitch, setLoginSwitch] = useState(true)
 
   const paperStyle={
@@ -32,7 +32,7 @@ function LoginSignup({ setUser }) {
               <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
               <Typography>Log In</Typography>
             </Grid>
-            <LoginForm setUser={setUser}/>
+            <LoginForm setUser={setUser} setUserIdeas={setUserIdeas}/>
             <Typography>
               Don't Have an Account?
               <Button onClick={() => setLoginSwitch(false)}>Sign Up</Button>

@@ -1,11 +1,13 @@
 import { Grid, Paper, Typography, Button, List, Divider } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
+import { UserContext } from '../components/App'
 
-function IdeaDetails({ idea, loggedUser, setComments, comments }) {
-  const {id, title, content, likes, user} = idea
+function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas }) {
+  const [user, setUser] = useContext(UserContext)
+  const {id, title, content, likes, user: ideaOwner} = idea
 
   let navigate = useNavigate()
   
@@ -13,7 +15,7 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
     fetch(`ideas/${id}/comments`)
     .then(r => r.json())
     .then(comments => setComments(comments))
-  }, [id])
+  }, [id, setComments])
 
   function handleUpdateComs(comment) {
     const coms = comments.map(com => {
@@ -45,7 +47,7 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
             <Typography variant='h4' sx={{ fontWeight: 'bold', align: 'center'}}>{title}</Typography>
           </Grid>
           <Grid item sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          {loggedUser.id === idea.user_id ?
+          {user.id === idea.user_id ?
                 <Button variant='contained' size='small' onClick={() => navigate('/updateidea')}>Update</Button>
               :
                 null
@@ -54,8 +56,8 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
         </Grid>
         <Grid container flexDirection='row'>
           <Grid item sx={{display: 'flex', justifyContent: 'flex-start'}}>
-            {user ?
-              <Typography>By: {user.username}</Typography>
+            {ideaOwner ?
+              <Typography>By: {ideaOwner.username}</Typography>
             :
               null
             }
@@ -95,7 +97,9 @@ function IdeaDetails({ idea, loggedUser, setComments, comments }) {
           comments={comments}
           setComments={setComments}
           idea={idea}
-          loggedUser={loggedUser}
+          userIdeas={userIdeas}
+          setUserIdeas={setUserIdeas}
+          
         />
         <br/>
         <Button onClick={() => {

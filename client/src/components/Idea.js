@@ -26,8 +26,7 @@ function Idea({ idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
           setIsLikeDisabled(true)
         })
       }
-    })
-      
+    })  
   }
 
   function handleDelete() {
@@ -88,18 +87,4 @@ function Idea({ idea, onUpdateLikes, onIdeaDelete, onIdeaGrab }) {
 }
 
 export default Idea
-
-// Possible Reimplementation
-
-  {/* {user.id !== idea.user.id ?
-    <IconButton size='small' variant='contained' onClick={updateLikes}>❤️</IconButton>
-  : 
-    <IconButton disabled size='small' onClick={updateLikes}>♥️</IconButton>
-  } */}
-
-  {/* {user.id === idea.user.id ?
-    <Button variant='contained' color='error' onClick={handleDelete}>Delete Idea</Button>
-  :
-    <Button disabled onClick={handleDelete}>Delete Idea</Button>
-  } */}
 

@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TextField, Typography, Button, Grid, Paper } from '@mui/material'
+import { UserContext } from '../components/App'
 
-function NewIdea({ user, ideas, setIdeas }) {
+function NewIdea({ ideas, setIdeas }) {
+  const user = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -66,7 +68,7 @@ function NewIdea({ user, ideas, setIdeas }) {
               variant='standard'
               multiline
               rows='5'
-              rowsMax='10'
+              // rowsMax='10'
               id='content'
               value={content}
               onChange={e => setContent(e.target.value)}

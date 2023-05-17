@@ -3,7 +3,7 @@ import { TextField, Button, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 
 
-function Login({ setUser }) {
+function LoginForm({ setUser, setUserIdeas }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
@@ -22,6 +22,7 @@ function Login({ setUser }) {
       if(r.ok) {
         r.json().then(user =>{
           setUser(user)
+          setUserIdeas(user.idea_comments)
           setErrors([])
           navigate('/')
         })
@@ -67,4 +68,4 @@ function Login({ setUser }) {
   )
 }
 
-export default Login;
+export default LoginForm;

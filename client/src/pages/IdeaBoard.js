@@ -1,8 +1,10 @@
 import { Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Idea from '../components/Idea';
+import { UserContext } from "../components/App";
 
-function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab, errors }) {
+function IdeaBoard({ ideas, setIdeas, onIdeaGrab, errors }) {
+  const user = useContext(UserContext)
 
   function handleLikes(updatedLikesIdea) {
     const updatedLikesArr = ideas.map(idea => {
@@ -24,7 +26,6 @@ function IdeaBoard({ user, ideas, setIdeas, onIdeaGrab, errors }) {
           return (
             <Idea
               key={idea.id}
-              user={user}
               idea={idea}
               onUpdateLikes={handleLikes}
               onIdeaDelete={handleDelete}

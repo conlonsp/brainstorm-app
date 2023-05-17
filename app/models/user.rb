@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   validates :password, length: { in: 6..20 }
   validates :bio, length: { maximum: 250 }
+
 end

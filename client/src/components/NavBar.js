@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppBar, Box, Toolbar, Tabs, Tab, Grid, Typography, Button, Avatar } from '@mui/material'
 import ThunderstormOutlinedIcon from '@mui/icons-material/ThunderstormOutlined';
+import { UserContext } from './App';
 
-function NavBar({ pages, setUser, user }) {
+
+function NavBar({ pages, setUserIdeas }) {
+  const [user, setUser] = useContext(UserContext)
 
   const [value, setValue] = useState(0)
 
@@ -11,9 +14,12 @@ function NavBar({ pages, setUser, user }) {
     fetch('/logout', { method: 'DELETE'}).then(r => {
       if(r.ok) {
         setUser(null)
+        setUserIdeas([])
       }
     })
   }
+
+  console.log(user)
 
   return (
     <AppBar position="static">

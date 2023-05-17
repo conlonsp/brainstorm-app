@@ -1,8 +1,10 @@
 import { TextField, Button } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from './App'
 
-function CommentForm({ comments, setComments, idea, loggedUser }) {
+function CommentForm({ comments, setComments, idea, setUserIdeas, userIdeas }) {
 
+  const [user, setUser] = useContext(UserContext)
   const [content, setContent] = useState('')
   const [errors, setErrors] = useState([])
 
@@ -13,12 +15,18 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         content,
-        user_id: loggedUser.id,
+        user_id: user.id,
         idea_id: idea.id
       })
     }).then(r => {
       if(r.ok) {
         r.json().then(newComment => {
+          console.log(newComment)
+          setUserIdeas([...userIdeas, {
+            idea_id: idea.id,
+            idea_title: idea.title,
+            comment_content: newComment.content
+          }])
           setComments([...comments, newComment])
           setContent('')
           setErrors([])
@@ -44,7 +52,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
           onChange={e => setContent(e.target.value)}
         />
         <br/>
-        <input
+        {/* <input
           type='hidden'
           id='user_id'
           value={loggedUser.id}
@@ -53,7 +61,7 @@ function CommentForm({ comments, setComments, idea, loggedUser }) {
           type='hidden'
           id='idea_id'
           value={idea.id}
-        />
+        /> */}
         <br/>
         <Button variant='contained' type='submit'>Submit</Button>
       </form>
