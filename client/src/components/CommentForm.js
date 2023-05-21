@@ -2,7 +2,7 @@ import { TextField, Button } from '@mui/material'
 import React, { useState, useContext } from 'react'
 import { UserContext } from './App'
 
-function CommentForm({ comments, setComments, idea, setUserIdeas, userIdeas }) {
+function CommentForm({ comments, setComments, idea, setUserIdeas, userIdeas, collabIdeas, setCollabIdeas }) {
 
   const [user, setUser] = useContext(UserContext)
   const [content, setContent] = useState('')
@@ -21,11 +21,14 @@ function CommentForm({ comments, setComments, idea, setUserIdeas, userIdeas }) {
     }).then(r => {
       if(r.ok) {
         r.json().then(newComment => {
-          console.log(newComment)
           setUserIdeas([...userIdeas, {
             idea_id: idea.id,
             idea_title: idea.title,
             comment_content: newComment.content
+          }])
+          setCollabIdeas([...collabIdeas, {
+            idea_id: idea.id,
+            idea_title: idea.title
           }])
           setComments([...comments, newComment])
           setContent('')

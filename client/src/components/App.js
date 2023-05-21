@@ -19,6 +19,7 @@ function App() {
   const [comments, setComments] = useState([])
   const [errors, setErrors] = useState([])
   const [userIdeas, setUserIdeas] = useState([])
+  const [collabIdeas, setCollabIdeas] = useState([])
 
   const pages = ['dashboard', 'idea board', 'new idea']
 
@@ -30,6 +31,7 @@ function App() {
         r.json().then(user => {
           setUser(user)
           setUserIdeas(user.idea_comments)
+          setCollabIdeas(user.all_ideas)
         })
       }
     })
@@ -75,8 +77,9 @@ function App() {
         <Routes>
           <Route path='/' element={
             <Dashboard
-              latestIdea={latestIdea}
+              // latestIdea={latestIdea}
               userIdeas={userIdeas}
+              collabIdeas={collabIdeas}
             />
           }/>
           <Route path='/idea board' element={
@@ -96,12 +99,15 @@ function App() {
           }/>
           <Route path='/ideadetails' element={
             <IdeaDetails
+              key={idea.title}
               idea={idea}
               loggedUser={user}
               comments={comments}
               setComments={setComments}
               userIdeas={userIdeas}
               setUserIdeas={setUserIdeas}
+              collabIdeas={collabIdeas}
+              setCollabIdeas={setCollabIdeas}
             />
           }/>
           <Route path='/updateidea' element={

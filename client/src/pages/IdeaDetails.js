@@ -5,7 +5,7 @@ import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 import { UserContext } from '../components/App'
 
-function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas }) {
+function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas, collabIdeas, setCollabIdeas }) {
   const [user, setUser] = useContext(UserContext)
   const {id, title, content, likes, user: ideaOwner} = idea
 
@@ -76,10 +76,10 @@ function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas }) {
           <List>
           {comments.length > 0 ? comments.map(com => {
             return (
-              <Grid>
+              <Grid key={com.id}>
                 <Divider/>
                 <Comment
-                  key={com.id}
+                  
                   com={com}
                   onUpdateComs={handleUpdateComs}
                   onDeleteCom={handleDeleteCom}
@@ -99,7 +99,8 @@ function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas }) {
           idea={idea}
           userIdeas={userIdeas}
           setUserIdeas={setUserIdeas}
-          
+          setCollabIdeas={setCollabIdeas}
+          collabIdeas={collabIdeas}
         />
         <br/>
         <Button onClick={() => {

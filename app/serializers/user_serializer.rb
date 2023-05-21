@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :bio, :avatar_url, :comment_count,
-  :biggest_collab, :idea_comments
+  :biggest_collab, :idea_comments, :all_ideas
 
   has_many :created_ideas
   # has_many :ideas
@@ -17,6 +17,16 @@ class UserSerializer < ActiveModel::Serializer
       User.find(collab_id).username
     else
       nil
+    end
+  end
+
+  def all_ideas
+    ideas = object.ideas.uniq
+    ideas.map do |idea|
+      {
+        idea_id: idea.id,
+        idea_title: idea.title
+      }
     end
   end
 

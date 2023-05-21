@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Button, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-function Signup({ setUser }) {
+function SignupForm({ setUser }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -11,7 +11,6 @@ function Signup({ setUser }) {
   const [errors, setErrors] = useState([])
 
   const navigate = useNavigate()
-  
   
   function handleSubmit(e) {
     e.preventDefault()
@@ -114,4 +113,4 @@ function Signup({ setUser }) {
   )
 }
 
-export default Signup;
+export default SignupForm;
