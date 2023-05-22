@@ -3,19 +3,26 @@ import { Grid, Typography, Paper } from '@mui/material';
 import { UserContext } from '../components/App';
 
 
-function Dashboard({ userIdeas, collabIdeas }) {
+function Dashboard({ userIdeas, created }) {
 
   const [user, setUser] = useContext(UserContext)
 
-  const {username, biggest_collab, created_ideas: createdIdeas} = user
+  const {username, biggest_collab} = user
 
   let lastFive = userIdeas.slice(-5)
 
-  console.log(user.all_ideas)
+  const uniqueIdeas = userIdeas.reduce((acc, comment) => {
+    if (!acc.find(idea => idea.idea_title === comment.idea_title)) {
+      acc.push(comment);
+    }
+    return acc;
+  }, []);
 
+  console.log(uniqueIdeas)
+ 
   return (
     <Grid>
-      <Paper elevation={10} sx={{height: '75vh', mt: 3, p: 3}}>
+      <Paper elevation={10} sx={{ mt: 3, p: 3}}>
         <Typography align='center' variant='h4'>
           Welcome back, {username}!
         </Typography>
@@ -25,7 +32,7 @@ function Dashboard({ userIdeas, collabIdeas }) {
           <Paper elevation={5}  style={{padding: 10}}>
             <Grid align='center'>
               <Typography>Idea's Posted:</Typography>
-              <Typography>{createdIdeas.length}</Typography>
+              <Typography>{created.length}</Typography>
             </Grid>
             <Grid align='center'>
               <Typography>Comment's Made:</Typography>
@@ -57,7 +64,7 @@ function Dashboard({ userIdeas, collabIdeas }) {
         <Grid>
           <Typography variant='h6' sx={{textAlign: 'center'}}>All collaborated ideas:</Typography>
           <Paper elevation={5}  style={{padding: 10}}>
-            {collabIdeas.map(idea => {
+            {uniqueIdeas.map(idea => {
               return (
                 <ul style={{textAlign: 'center'}} key={idea.id}>
                   {idea.idea_title}

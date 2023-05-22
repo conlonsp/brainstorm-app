@@ -5,7 +5,7 @@ import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 import { UserContext } from '../components/App'
 
-function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas, collabIdeas, setCollabIdeas }) {
+function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas }) {
   const [user, setUser] = useContext(UserContext)
   const {id, title, content, likes, user: ideaOwner} = idea
 
@@ -99,8 +99,6 @@ function IdeaDetails({ idea, setComments, comments, userIdeas, setUserIdeas, col
           idea={idea}
           userIdeas={userIdeas}
           setUserIdeas={setUserIdeas}
-          setCollabIdeas={setCollabIdeas}
-          collabIdeas={collabIdeas}
         />
         <br/>
         <Button onClick={() => {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { TextField, Typography, Button, Grid, Paper } from '@mui/material'
 import { UserContext } from '../components/App'
 
-function NewIdea({ ideas, setIdeas }) {
+function NewIdea({ ideas, setIdeas, created, setCreated }) {
   const user = useContext(UserContext)
 
   const [title, setTitle] = useState('')
@@ -26,6 +26,7 @@ function NewIdea({ ideas, setIdeas }) {
       if(r.ok) {
         r.json().then(newIdea => {
           setIdeas([...ideas, newIdea])
+          setCreated([...created, newIdea])
           setTitle('')
           setContent('')
           navigate('/idea board')
